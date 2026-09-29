@@ -27,7 +27,7 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 75% 10%, rgba(216,255,50,.045), transparent 30%),
+    radial-gradient(circle at 75% 10%, rgba(45,166,255,.045), transparent 30%),
     #050608;
   color: var(--white);
 }
@@ -94,7 +94,7 @@ a {
   height: 49px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(216,255,50,.35);
+  border: 1px solid rgba(45,166,255,.35);
 }
 
 .brand div {
@@ -157,7 +157,7 @@ footer,
 }
 
 .cartButton:hover {
-  border-color: rgba(216,255,50,.45);
+  border-color: rgba(45,166,255,.45);
 }
 
 .cartButton b {
@@ -304,13 +304,13 @@ footer,
   content: "";
   position: absolute;
   inset: 10%;
-  border: 1px dashed rgba(216,255,50,.18);
+  border: 1px dashed rgba(45,166,255,.18);
   border-radius: 50%;
 }
 
 .orbit {
   position: absolute;
-  border: 1px solid rgba(216,255,50,.3);
+  border: 1px solid rgba(45,166,255,.3);
   border-radius: 50%;
   transform: rotate(-25deg);
 }
@@ -334,11 +334,11 @@ footer,
   align-content: center;
   gap: 8px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(216,255,50,.12), transparent 65%);
-  border: 1px solid rgba(216,255,50,.5);
+  background: radial-gradient(circle, rgba(45,166,255,.12), transparent 65%);
+  border: 1px solid rgba(45,166,255,.5);
   box-shadow:
-    0 0 70px rgba(216,255,50,.12),
-    inset 0 0 50px rgba(216,255,50,.06);
+    0 0 70px rgba(45,166,255,.12),
+    inset 0 0 50px rgba(45,166,255,.06);
   color: var(--accent);
 }
 
@@ -354,13 +354,13 @@ footer,
   right: 0;
   height: 1px;
   top: 50%;
-  background: linear-gradient(90deg, transparent, rgba(216,255,50,.65), transparent);
+  background: linear-gradient(90deg, transparent, rgba(45,166,255,.65), transparent);
 }
 
 .techLabel {
   position: absolute;
   padding: 7px 10px;
-  border: 1px solid rgba(216,255,50,.25);
+  border: 1px solid rgba(45,166,255,.25);
   background: rgba(5,6,8,.75);
   color: var(--accent);
   font-family: var(--mono);
@@ -490,7 +490,7 @@ footer,
 
 .productCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(216,255,50,.3);
+  border-color: rgba(45,166,255,.3);
 }
 
 .productVisual {
@@ -533,7 +533,7 @@ footer,
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: rgba(216,255,50,.04);
+  background: rgba(45,166,255,.04);
   filter: blur(25px);
 }
 
@@ -675,7 +675,7 @@ footer,
   place-items: center;
   align-content: center;
   gap: 8px;
-  border: 1px solid rgba(216,255,50,.5);
+  border: 1px solid rgba(45,166,255,.5);
   border-radius: 50%;
   color: var(--accent);
   z-index: 3;
@@ -689,7 +689,7 @@ footer,
 
 .diagramRing {
   position: absolute;
-  border: 1px dashed rgba(216,255,50,.25);
+  border: 1px dashed rgba(45,166,255,.25);
   border-radius: 50%;
 }
 
@@ -873,7 +873,7 @@ footer a:hover {
 
 .iconButton:hover {
   color: var(--accent);
-  border-color: rgba(216,255,50,.35);
+  border-color: rgba(45,166,255,.35);
 }
 
 .cartItems {
@@ -938,7 +938,7 @@ footer a:hover {
 }
 
 .quantity > button:hover {
-  border-color: rgba(216,255,50,.4);
+  border-color: rgba(45,166,255,.4);
 }
 
 .quantity > span {
@@ -1173,3 +1173,4 @@ footer a:hover {
     padding-right: 20px;
   }
 }
+
