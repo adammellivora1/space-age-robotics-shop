@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
   font-family: Inter, Arial, sans-serif;
@@ -12,7 +12,7 @@
   --line: rgba(255,255,255,.11);
   --muted: #858b94;
   --white: #f5f7fa;
-  --accent: #d8ff32;
+  --accent: #2da6ff;
   --mono: "Space Mono", monospace;
 }
 
