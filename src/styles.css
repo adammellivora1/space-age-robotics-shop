@@ -1671,3 +1671,686 @@ footer a:hover {
     width: 320px;
   }
 }
+
+/* =========================================================
+   ROBOTICS CATEGORY CATALOG
+   ========================================================= */
+
+.roboticsCategories {
+  position: relative;
+  padding: 130px 6vw 100px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(45,166,255,.10), transparent 28%),
+    radial-gradient(circle at 85% 70%, rgba(45,166,255,.07), transparent 30%),
+    linear-gradient(180deg, #05080c 0%, #030507 100%);
+}
+
+.roboticsCategories::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(45,166,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,166,255,.035) 1px, transparent 1px);
+  background-size: 70px 70px;
+}
+
+.roboticsCategoriesHeader {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 50px;
+  max-width: 1500px;
+  margin: 0 auto 55px;
+}
+
+.roboticsCategoriesEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .24em;
+  color: #2da6ff;
+}
+
+.categoryStatus {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2da6ff;
+  box-shadow: 0 0 15px rgba(45,166,255,.9);
+  animation: categoryPulse 2s infinite;
+}
+
+@keyframes categoryPulse {
+  0%,100% { opacity: .45; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.roboticsCategoriesHeader h2 {
+  margin: 0;
+  max-width: 850px;
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  font-weight: 800;
+  color: #f2f7fb;
+}
+
+.roboticsCategoriesHeader h2 span {
+  display: block;
+  color: #2da6ff;
+}
+
+.roboticsCategoriesHeader p {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: rgba(220,235,245,.62);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.categoryCounter {
+  min-width: 150px;
+  padding: 20px 24px;
+  border-left: 1px solid rgba(45,166,255,.4);
+  background: rgba(45,166,255,.025);
+}
+
+.categoryCounter span {
+  display: block;
+  font-size: 54px;
+  line-height: .9;
+  font-weight: 800;
+  color: #2da6ff;
+}
+
+.categoryCounter small {
+  display: block;
+  margin-top: 12px;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: .18em;
+  color: rgba(220,235,245,.5);
+}
+
+.roboticsCategoryGrid {
+  position: relative;
+  z-index: 1;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(45,166,255,.12);
+  border: 1px solid rgba(45,166,255,.12);
+}
+
+.roboticsCategoryCard {
+  position: relative;
+  min-height: 290px;
+  padding: 30px;
+  overflow: hidden;
+  text-decoration: none;
+  background:
+    linear-gradient(145deg, rgba(10,17,24,.98), rgba(4,8,12,.98));
+  border: 1px solid transparent;
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    border-color .35s ease;
+}
+
+.roboticsCategoryCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 1px;
+  background: #2da6ff;
+  opacity: .7;
+}
+
+.roboticsCategoryCard::after {
+  content: "";
+  position: absolute;
+  right: -45px;
+  bottom: -45px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(45,166,255,.10);
+  border-radius: 50%;
+  transition: .4s ease;
+}
+
+.roboticsCategoryCard:hover {
+  z-index: 2;
+  transform: translateY(-5px);
+  border-color: rgba(45,166,255,.55);
+  background:
+    linear-gradient(145deg, rgba(12,28,40,.98), rgba(4,10,16,.98));
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.45),
+    inset 0 0 30px rgba(45,166,255,.035);
+}
+
+.roboticsCategoryCard:hover::after {
+  transform: scale(1.5);
+  border-color: rgba(45,166,255,.25);
+}
+
+.categoryNumber {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: rgba(45,166,255,.45);
+}
+
+.categoryIcon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 45px;
+  border: 1px solid rgba(45,166,255,.28);
+  color: #2da6ff;
+  font-size: 20px;
+  background: rgba(45,166,255,.035);
+  box-shadow: inset 0 0 20px rgba(45,166,255,.025);
+}
+
+.categoryCardContent h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  letter-spacing: -.02em;
+  color: #eef6fb;
+}
+
+.categoryCardContent p {
+  margin: 0;
+  min-height: 65px;
+  color: rgba(210,225,235,.55);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.categoryExplore {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  color: #2da6ff;
+  opacity: .7;
+  transition: .3s ease;
+}
+
+.roboticsCategoryCard:hover .categoryExplore {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.categoryFeatured {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(45,166,255,.12), transparent 35%),
+    linear-gradient(145deg, rgba(10,24,34,.98), rgba(4,8,12,.98));
+}
+
+.roboticsCategoriesFooter {
+  position: relative;
+  z-index: 1;
+  max-width: 1500px;
+  margin: 24px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  color: rgba(220,235,245,.35);
+}
+
+.footerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(45,166,255,.35),
+    transparent
+  );
+}
+
+@media (max-width: 1200px) {
+  .roboticsCategoryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .roboticsCategoriesHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .categoryCounter {
+    border-left: 0;
+    border-top: 1px solid rgba(45,166,255,.4);
+  }
+
+  .roboticsCategoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .roboticsCategories {
+    padding: 90px 20px 70px;
+  }
+
+  .roboticsCategoryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .roboticsCategoryCard {
+    min-height: 250px;
+  }
+
+  .roboticsCategoriesFooter {
+    flex-wrap: wrap;
+  }
+
+  .footerLine {
+    display: none;
+  }
+}
+
+
+
+/* ============================================================
+   SPACE AGE ROBOTICS — PREMIUM SYSTEM CATALOG
+   ============================================================ */
+
+.roboticsCatalog {
+  position: relative;
+  padding: 110px 0 30px;
+  overflow: hidden;
+}
+
+.roboticsCatalog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(45,166,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,166,255,.035) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.catalogTop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  align-items: flex-end;
+  margin-bottom: 55px;
+}
+
+.catalogIntro {
+  max-width: 760px;
+}
+
+.catalogEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
+
+.catalogPulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+
+.catalogIntro h2 {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  font-weight: 800;
+}
+
+.catalogIntro h2 span {
+  display: block;
+  color: var(--accent);
+  text-shadow: 0 0 35px rgba(45,166,255,.18);
+}
+
+.catalogIntro p {
+  max-width: 620px;
+  margin: 25px 0 0;
+  color: rgba(255,255,255,.52);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.catalogTelemetry {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 5px;
+}
+
+.catalogTelemetry div {
+  min-width: 95px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(45,166,255,.25);
+}
+
+.catalogTelemetry strong {
+  display: block;
+  color: var(--accent);
+  font-size: 21px;
+  letter-spacing: .08em;
+}
+
+.catalogTelemetry span {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255,255,255,.35);
+  font-size: 9px;
+  letter-spacing: .18em;
+}
+
+.catalogNavigation {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(5,10,17,.72);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.catalogTab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 52px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255,255,255,.48);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  transition: all .25s ease;
+}
+
+.catalogTabNumber {
+  color: rgba(45,166,255,.4);
+  font-size: 9px;
+}
+
+.catalogTab:hover {
+  color: white;
+  background: rgba(45,166,255,.06);
+  border-color: rgba(45,166,255,.16);
+}
+
+.catalogTab.active {
+  color: #fff;
+  background: rgba(45,166,255,.12);
+  border-color: rgba(45,166,255,.42);
+  box-shadow:
+    inset 0 0 25px rgba(45,166,255,.05),
+    0 0 22px rgba(45,166,255,.08);
+}
+
+.catalogTab.active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.catalogProducts {
+  padding-top: 25px;
+}
+
+.catalogProductsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.catalogProductsHeader span {
+  color: rgba(255,255,255,.4);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.catalogProductsHeader strong {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.catalogProducts .productGrid {
+  position: relative;
+}
+
+.catalogProducts .productCard {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.008)),
+    rgba(5,10,17,.72);
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.catalogProducts .productCard:hover {
+  transform: translateY(-7px);
+  border-color: rgba(45,166,255,.5);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.45),
+    0 0 35px rgba(45,166,255,.08);
+}
+
+.catalogProducts .productVisual {
+  min-height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(45,166,255,.12), transparent 48%),
+    linear-gradient(135deg, rgba(45,166,255,.025), transparent 60%);
+}
+
+.catalogProducts .productVisual::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border: 1px solid rgba(45,166,255,.12);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 25px rgba(45,166,255,.018),
+    0 0 0 50px rgba(45,166,255,.012);
+}
+
+.catalogProducts .productVisual svg {
+  position: relative;
+  z-index: 2;
+  color: var(--accent);
+  filter: drop-shadow(0 0 15px rgba(45,166,255,.4));
+}
+
+.catalogProducts .productCorner {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  color: rgba(255,255,255,.32);
+  font-size: 8px;
+  letter-spacing: .16em;
+}
+
+.catalogProducts .productInfo {
+  padding: 23px;
+}
+
+.catalogProducts .productCategory {
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+.catalogProducts .productInfo h3 {
+  margin: 9px 0 10px;
+  font-size: 20px;
+  letter-spacing: -.02em;
+}
+
+.catalogProducts .productInfo p {
+  min-height: 50px;
+  color: rgba(255,255,255,.45);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.catalogProducts .productBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.catalogProducts .productBottom strong {
+  color: white;
+  font-size: 19px;
+}
+
+.catalogProducts .productBottom button {
+  border: 1px solid rgba(45,166,255,.3);
+  background: rgba(45,166,255,.07);
+  color: white;
+  transition: all .2s ease;
+}
+
+.catalogProducts .productBottom button:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #03101a;
+  box-shadow: 0 0 20px rgba(45,166,255,.25);
+}
+
+@media (max-width: 900px) {
+  .catalogTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .catalogTelemetry {
+    width: 100%;
+  }
+
+  .catalogNavigation {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+  }
+
+  .catalogTab {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .roboticsCatalog {
+    padding-top: 75px;
+  }
+
+  .catalogTelemetry {
+    gap: 15px;
+  }
+
+  .catalogTelemetry div {
+    min-width: 75px;
+  }
+
+  .catalogProducts .productVisual {
+    min-height: 210px;
+  }
+}
+
+
+/* Catalog intro centered */
+.catalogTop {
+  justify-content: center;
+  text-align: center;
+}
+
+.catalogIntro {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.catalogEyebrow {
+  justify-content: center;
+}
+
+.catalogIntro p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.catalogTelemetry {
+  display: none;
+}
+

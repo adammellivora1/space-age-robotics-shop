@@ -712,20 +712,16 @@ function App() {
       </section>
 
 
-        <section id="robotics-catalog" className="roboticsCatalog">
+        <section id="robotics-categories" className="roboticsCategories">
 
-  <div className="catalogTop">
-
-    <div className="catalogIntro">
-      <div className="catalogEyebrow">
-        <span className="catalogPulse"></span>
+  <div className="roboticsCategoriesHeader">
+    <div>
+      <div className="roboticsCategoriesEyebrow">
+        <span className="categoryStatus"></span>
         SPACE AGE ROBOTICS / SYSTEM CATALOG
       </div>
 
-      <h2>
-        Explore the
-        <span> Robotics Universe.</span>
-      </h2>
+      <h2>Explore the <span>Robotics Universe.</span></h2>
 
       <p>
         Autonomous machines, intelligent systems and advanced robotics
@@ -733,141 +729,344 @@ function App() {
       </p>
     </div>
 
-    <div className="catalogTelemetry">
-      <div>
-        <strong>LIVE</strong>
-        <span>SYSTEM INDEX</span>
-      </div>
-      <div>
-        <strong>24+</strong>
-        <span>PRODUCTS</span>
-      </div>
-      <div>
-        <strong>28</strong>
-        <span>CLASSES</span>
-      </div>
+    <div className="categoryCounter">
+      <span>28</span>
+      <small>TECHNOLOGY<br />CATEGORIES</small>
     </div>
+  </div>
+
+  <div className="roboticsCategoryGrid">
+
+    <a href="#humanoid-robots" className="roboticsCategoryCard categoryFeatured">
+      <span className="categoryNumber">01</span>
+      <div className="categoryIcon">◈</div>
+      <div className="categoryCardContent">
+        <h3>Humanoid Robots</h3>
+        <p>General-purpose humanoids, AI assistants and next-generation human-machine platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#industrial-robots" className="roboticsCategoryCard">
+      <span className="categoryNumber">02</span>
+      <div className="categoryIcon">⬡</div>
+      <div className="categoryCardContent">
+        <h3>Industrial Robots</h3>
+        <p>Robotic arms, assembly systems, manufacturing automation and precision robotics.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#mobile-robots" className="roboticsCategoryCard">
+      <span className="categoryNumber">03</span>
+      <div className="categoryIcon">◇</div>
+      <div className="categoryCardContent">
+        <h3>Mobile Robots</h3>
+        <p>Autonomous mobile robots, warehouse platforms, transport and delivery systems.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#rovers" className="roboticsCategoryCard">
+      <span className="categoryNumber">04</span>
+      <div className="categoryIcon">◉</div>
+      <div className="categoryCardContent">
+        <h3>Autonomous Rovers</h3>
+        <p>Exploration, inspection, off-road and autonomous utility rover platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#security" className="roboticsCategoryCard">
+      <span className="categoryNumber">05</span>
+      <div className="categoryIcon">⬢</div>
+      <div className="categoryCardContent">
+        <h3>Security Robots</h3>
+        <p>Autonomous patrol, inspection, perimeter monitoring and facility robotics.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#agriculture" className="roboticsCategoryCard">
+      <span className="categoryNumber">06</span>
+      <div className="categoryIcon">✦</div>
+      <div className="categoryCardContent">
+        <h3>Agricultural Robots</h3>
+        <p>Autonomous field systems, crop monitoring, harvesting and precision agriculture.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#robot-mowers" className="roboticsCategoryCard categoryFeatured">
+      <span className="categoryNumber">07</span>
+      <div className="categoryIcon">◎</div>
+      <div className="categoryCardContent">
+        <h3>Robot Mowers</h3>
+        <p>Autonomous lawn systems for residential, commercial and large-area environments.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#drones" className="roboticsCategoryCard">
+      <span className="categoryNumber">08</span>
+      <div className="categoryIcon">△</div>
+      <div className="categoryCardContent">
+        <h3>Drones</h3>
+        <p>Autonomous, industrial, mapping, inspection and aerial intelligence platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#heavy-lift" className="roboticsCategoryCard">
+      <span className="categoryNumber">09</span>
+      <div className="categoryIcon">⬙</div>
+      <div className="categoryCardContent">
+        <h3>Heavy-Lift Drones</h3>
+        <p>Cargo, infrastructure, construction and industrial aerial platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#drone-swarms" className="roboticsCategoryCard">
+      <span className="categoryNumber">10</span>
+      <div className="categoryIcon">✧</div>
+      <div className="categoryCardContent">
+        <h3>Drone Swarms</h3>
+        <p>Coordinated autonomous fleets for mapping, research and complex missions.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#home-robots" className="roboticsCategoryCard">
+      <span className="categoryNumber">11</span>
+      <div className="categoryIcon">⌂</div>
+      <div className="categoryCardContent">
+        <h3>Home Robots</h3>
+        <p>Household assistants, cleaning robots, companion systems and smart home robotics.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#service-robots" className="roboticsCategoryCard">
+      <span className="categoryNumber">12</span>
+      <div className="categoryIcon">◇</div>
+      <div className="categoryCardContent">
+        <h3>Service &amp; Delivery Robots</h3>
+        <p>Autonomous systems for hospitality, retail, logistics and last-mile delivery.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#medical" className="roboticsCategoryCard">
+      <span className="categoryNumber">13</span>
+      <div className="categoryIcon">+</div>
+      <div className="categoryCardContent">
+        <h3>Medical Robotics</h3>
+        <p>Assistive, rehabilitation, hospital logistics and healthcare robotics.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#construction" className="roboticsCategoryCard">
+      <span className="categoryNumber">14</span>
+      <div className="categoryIcon">▣</div>
+      <div className="categoryCardContent">
+        <h3>Construction Robots</h3>
+        <p>Construction automation, inspection, fabrication and autonomous site systems.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#mining-energy" className="roboticsCategoryCard">
+      <span className="categoryNumber">15</span>
+      <div className="categoryIcon">⚡</div>
+      <div className="categoryCardContent">
+        <h3>Mining &amp; Energy Robots</h3>
+        <p>Robotic systems for mining, pipelines, solar, wind and energy infrastructure.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#underwater" className="roboticsCategoryCard">
+      <span className="categoryNumber">16</span>
+      <div className="categoryIcon">≈</div>
+      <div className="categoryCardContent">
+        <h3>Underwater Robotics</h3>
+        <p>ROVs, AUVs, marine inspection and autonomous underwater exploration systems.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#space" className="roboticsCategoryCard categoryFeatured">
+      <span className="categoryNumber">17</span>
+      <div className="categoryIcon">✦</div>
+      <div className="categoryCardContent">
+        <h3>Space Robotics</h3>
+        <p>Planetary rovers, orbital robotics, manipulators and exploration platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#research" className="roboticsCategoryCard">
+      <span className="categoryNumber">18</span>
+      <div className="categoryIcon">⌬</div>
+      <div className="categoryCardContent">
+        <h3>Research &amp; Educational Robotics</h3>
+        <p>STEM platforms, research systems, development kits and experimental robotics.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#autonomous-vehicles" className="roboticsCategoryCard">
+      <span className="categoryNumber">19</span>
+      <div className="categoryIcon">▰</div>
+      <div className="categoryCardContent">
+        <h3>Autonomous Vehicles</h3>
+        <p>Self-driving platforms, robotic utility vehicles and autonomous mobility systems.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#robotic-arms" className="roboticsCategoryCard">
+      <span className="categoryNumber">20</span>
+      <div className="categoryIcon">╋</div>
+      <div className="categoryCardContent">
+        <h3>Robotic Arms</h3>
+        <p>Precision manipulators, collaborative robots and industrial automation platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#sensors-vision" className="roboticsCategoryCard">
+      <span className="categoryNumber">21</span>
+      <div className="categoryIcon">◌</div>
+      <div className="categoryCardContent">
+        <h3>Robot Sensors &amp; Vision</h3>
+        <p>Computer vision, LiDAR, perception systems and advanced robotic sensing.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#ai-computing" className="roboticsCategoryCard">
+      <span className="categoryNumber">22</span>
+      <div className="categoryIcon">⌘</div>
+      <div className="categoryCardContent">
+        <h3>AI &amp; Robot Computing</h3>
+        <p>Edge AI, robotic computers, neural processing and autonomous intelligence.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#power" className="roboticsCategoryCard">
+      <span className="categoryNumber">23</span>
+      <div className="categoryIcon">⚡</div>
+      <div className="categoryCardContent">
+        <h3>Power Systems</h3>
+        <p>Robotics batteries, charging systems, energy storage and mobile power platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#components" className="roboticsCategoryCard">
+      <span className="categoryNumber">24</span>
+      <div className="categoryIcon">⬢</div>
+      <div className="categoryCardContent">
+        <h3>Robotics Components</h3>
+        <p>Motors, actuators, controllers, electronics and essential robotics hardware.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#robot-kits" className="roboticsCategoryCard">
+      <span className="categoryNumber">25</span>
+      <div className="categoryIcon">◇</div>
+      <div className="categoryCardContent">
+        <h3>Robot Kits</h3>
+        <p>Buildable robotics platforms for makers, developers, students and researchers.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#software-ai" className="roboticsCategoryCard">
+      <span className="categoryNumber">26</span>
+      <div className="categoryIcon">01</div>
+      <div className="categoryCardContent">
+        <h3>Robotics Software &amp; AI</h3>
+        <p>Autonomy software, robot operating systems, AI agents and control platforms.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#custom-systems" className="roboticsCategoryCard">
+      <span className="categoryNumber">27</span>
+      <div className="categoryIcon">✦</div>
+      <div className="categoryCardContent">
+        <h3>Custom Robotics Systems</h3>
+        <p>Specialized robotic platforms engineered around unique operational requirements.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
+
+    <a href="#future-tech" className="roboticsCategoryCard categoryFeatured">
+      <span className="categoryNumber">28</span>
+      <div className="categoryIcon">∞</div>
+      <div className="categoryCardContent">
+        <h3>Future Technology</h3>
+        <p>Experimental systems, emerging robotics and technologies beyond today's limits.</p>
+        <span className="categoryExplore">EXPLORE SYSTEMS →</span>
+      </div>
+    </a>
 
   </div>
 
-  <div className="catalogNavigation">
-
-    <button
-      className={category === "ALL" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ALL")}
-    >
-      <span className="catalogTabNumber">00</span>
-      <span>ALL SYSTEMS</span>
-    </button>
-
-    <button
-      className={category === "ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ROBOTICS")}
-    >
-      <span className="catalogTabNumber">01</span>
-      <span>ROBOTICS</span>
-    </button>
-
-    <button
-      className={category === "AI SYSTEMS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AI SYSTEMS")}
-    >
-      <span className="catalogTabNumber">02</span>
-      <span>AI SYSTEMS</span>
-    </button>
-
-    <button
-      className={category === "SPACE TECH" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SPACE TECH")}
-    >
-      <span className="catalogTabNumber">03</span>
-      <span>SPACE TECH</span>
-    </button>
-
-    <button
-      className={category === "HUMANOID ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("HUMANOID ROBOTS")}
-    >
-      <span className="catalogTabNumber">04</span>
-      <span>HUMANOIDS</span>
-    </button>
-
-    <button
-      className={category === "DRONES" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("DRONES")}
-    >
-      <span className="catalogTabNumber">05</span>
-      <span>DRONES</span>
-    </button>
-
-    <button
-      className={category === "ROBOT MOWERS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ROBOT MOWERS")}
-    >
-      <span className="catalogTabNumber">06</span>
-      <span>MOWERS</span>
-    </button>
-
-    <button
-      className={category === "AUTONOMOUS ROVERS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AUTONOMOUS ROVERS")}
-    >
-      <span className="catalogTabNumber">07</span>
-      <span>ROVERS</span>
-    </button>
-
-    <button
-      className={category === "INDUSTRIAL ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("INDUSTRIAL ROBOTS")}
-    >
-      <span className="catalogTabNumber">08</span>
-      <span>INDUSTRIAL</span>
-    </button>
-
-    <button
-      className={category === "SECURITY ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SECURITY ROBOTS")}
-    >
-      <span className="catalogTabNumber">09</span>
-      <span>SECURITY</span>
-    </button>
-
-    <button
-      className={category === "AGRICULTURAL ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AGRICULTURAL ROBOTS")}
-    >
-      <span className="catalogTabNumber">10</span>
-      <span>AGRICULTURE</span>
-    </button>
-
-    <button
-      className={category === "SPACE ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SPACE ROBOTICS")}
-    >
-      <span className="catalogTabNumber">11</span>
-      <span>SPACE ROBOTICS</span>
-    </button>
-
-    <button
-      className={category === "UNDERWATER ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("UNDERWATER ROBOTICS")}
-    >
-      <span className="catalogTabNumber">12</span>
-      <span>UNDERWATER</span>
-    </button>
-
-    <button
-      className={category === "CONSTRUCTION ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("CONSTRUCTION ROBOTS")}
-    >
-      <span className="catalogTabNumber">13</span>
-      <span>CONSTRUCTION</span>
-    </button>
-
+  <div className="roboticsCategoriesFooter">
+    <span>28 SYSTEM CLASSES</span>
+    <span className="footerLine"></span>
+    <span>AUTONOMOUS / INTELLIGENT / HUMAN-CENTRIC</span>
   </div>
 
 </section>
-<section className="section catalogProducts" id="shop"><div className="catalogProductsHeader"><span>AVAILABLE SYSTEMS</span><strong>{filteredProducts.length} UNITS</strong></div><div className="productGrid">
+
+<section className="section" id="shop">
+          <div className="sectionHeader">
+            <div>
+              <div className="eyebrow">
+                <span />
+                THE COLLECTION
+              </div>
+              <h2>ENGINEERED FOR TOMORROW.</h2>
+            </div>
+
+            <p>
+              Explore our growing collection of robotics and AI systems
+              designed for ambitious builders.
+            </p>
+          </div>
+
+          <div className="shopTools">
+            <div className="categories">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  className={category === item ? "active" : ""}
+                  onClick={() => setCategory(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            <label className="searchBox">
+              <Search size={18} />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="SEARCH SYSTEMS..."
+              />
+            </label>
+          </div>
+
+          <div className="productGrid">
             {filteredProducts.map((product) => {
               const Icon = product.icon
 
@@ -1144,7 +1343,6 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
-
 
 
 

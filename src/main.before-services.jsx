@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState } from "react"
+import React, { useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   ArrowRight,
@@ -131,115 +131,7 @@ const products = [
     icon: Zap,
     code: "ATC-01",
     description: "Autonomous control and decision engine for advanced robotic platforms."
-  },
-  {
-    id: "sar-h01",
-    code: "H01",
-    name: "SAR-H01 TITAN",
-    category: "HUMANOID ROBOTS",
-    price: 12990,
-    description: "Advanced autonomous humanoid platform for industrial and service applications.",
-    icon: Bot,
-  },
-  {
-    id: "sar-d01",
-    code: "D01",
-    name: "SAR-D01 AEROS",
-    category: "DRONES",
-    price: 2490,
-    description: "Autonomous aerial intelligence platform with advanced computer vision.",
-    icon: Rocket,
-  },
-  {
-    id: "sar-m01",
-    code: "M01",
-    name: "SAR-M01 TERRAIN",
-    category: "ROBOT MOWERS",
-    price: 1890,
-    description: "Autonomous terrain management system designed for large outdoor areas.",
-    icon: Bot,
-  },
-  {
-    id: "sar-r01",
-    code: "R01",
-    name: "SAR-R01 EXPLORER",
-    category: "AUTONOMOUS ROVERS",
-    price: 7990,
-    description: "All-terrain autonomous rover for exploration, inspection and remote operations.",
-    icon: Globe2,
-  },
-  {
-    id: "sar-i01",
-    code: "I01",
-    name: "SAR-I01 INDUSTRIAL",
-    category: "INDUSTRIAL ROBOTS",
-    price: 4990,
-    description: "Precision robotic platform engineered for advanced industrial automation.",
-    icon: Bot,
-  },
-  {
-    id: "sar-s01",
-    code: "S01",
-    name: "SAR-S01 SENTINEL",
-    category: "SECURITY ROBOTS",
-    price: 12990,
-    description: "Autonomous security and inspection platform for perimeter operations.",
-    icon: Bot,
-  },
-  {
-    id: "sar-a01",
-    code: "A01",
-    name: "SAR-A01 AGRI",
-    category: "AGRICULTURAL ROBOTS",
-    price: 15990,
-    description: "Autonomous agricultural platform for precision field operations.",
-    icon: Globe2,
-  },
-  {
-    id: "sar-x01",
-    code: "X01",
-    name: "SAR-X01 ORBITAL",
-    category: "SPACE ROBOTICS",
-    price: 49990,
-    description: "Advanced robotic platform designed for extreme environments and exploration.",
-    icon: Rocket,
-  },
-  {
-    id: "sar-u01",
-    code: "U01",
-    name: "SAR-U01 ABYSS",
-    category: "UNDERWATER ROBOTICS",
-    price: 18990,
-    description: "Autonomous underwater exploration and inspection platform.",
-    icon: Globe2,
-  },
-  {
-    id: "sar-c01",
-    code: "C01",
-    name: "SAR-C01 BUILDER",
-    category: "CONSTRUCTION ROBOTS",
-    price: 22990,
-    description: "Autonomous construction platform for demanding industrial environments.",
-    icon: Bot,
-  },
-  {
-    id: "sar-h02",
-    code: "H02",
-    name: "SAR-H02 ATLAS",
-    category: "HUMANOID ROBOTS",
-    price: 24990,
-    description: "Next-generation humanoid platform with advanced AI and autonomous mobility.",
-    icon: Bot,
-  },
-  {
-    id: "sar-d02",
-    code: "D02",
-    name: "SAR-D02 SCOUT",
-    category: "DRONES",
-    price: 2190,
-    description: "Compact autonomous reconnaissance and inspection drone.",
-    icon: Rocket,
-  },
+  }
 ]
 
 const categories = ["ALL", "ROBOTICS", "AI SYSTEMS", "SPACE TECH"]
@@ -460,7 +352,7 @@ function App() {
                   <span>AUTONOMOUS</span>
                 </div>
                 <div>
-                  <strong>âˆž</strong>
+                  <strong>∞</strong>
                   <span>POSSIBILITIES</span>
                 </div>
               </div>
@@ -485,389 +377,57 @@ function App() {
           <div>
             <Sparkles size={15} />
             AUTONOMOUS SYSTEMS
-            <span>â€¢</span>
+            <span>•</span>
             ARTIFICIAL INTELLIGENCE
-            <span>â€¢</span>
+            <span>•</span>
             SPACE TECHNOLOGY
-            <span>â€¢</span>
+            <span>•</span>
             ROBOTICS
-            <span>â€¢</span>
+            <span>•</span>
             AUTONOMOUS SYSTEMS
           </div>
         </section>
 
-                  <section id="engineering" className="engineeringSection">
-
-        <div className="engineeringOrb engineeringOrbOne"></div>
-        <div className="engineeringOrb engineeringOrbTwo"></div>
-
-        <div className="engineeringHero">
-          <div className="engineeringHeroText">
-            <div className="engineeringEyebrow">
-              <span className="engineeringStatus"></span>
-              ENGINEERING / SOFTWARE / AI
+        <section className="section" id="shop">
+          <div className="sectionHeader">
+            <div>
+              <div className="eyebrow">
+                <span />
+                THE COLLECTION
+              </div>
+              <h2>ENGINEERED FOR TOMORROW.</h2>
             </div>
 
-            <h2>
-              Engineering the
-              <span> Intelligent Future.</span>
-            </h2>
-
-            <p className="engineeringLead">
-              Beyond Robotics — advanced software, AI, automation and
-              engineering systems built for the next generation of technology.
-            </p>
-
-            <div className="engineeringHeroLine"></div>
-
-            <p className="engineeringDescription">
-              From autonomous machines and artificial intelligence to
-              cybersecurity, embedded systems and cloud infrastructure —
-              we design technology around real-world requirements.
+            <p>
+              Explore our growing collection of robotics and AI systems
+              designed for ambitious builders.
             </p>
           </div>
 
-          <div className="engineeringVisual">
-            <div className="engineeringCore">
-              <div className="coreRing coreRingOne"></div>
-              <div className="coreRing coreRingTwo"></div>
-              <div className="coreRing coreRingThree"></div>
-
-              <div className="coreCenter">
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                  <path d="M50 12 L78 28 L78 62 L50 78 L22 62 L22 28 Z"/>
-                  <path d="M50 28 L65 37 L65 55 L50 64 L35 55 L35 37 Z"/>
-                  <circle cx="50" cy="46" r="7"/>
-                </svg>
-              </div>
-
-              <span className="coreLabel">SAR / AI CORE</span>
+          <div className="shopTools">
+            <div className="categories">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  className={category === item ? "active" : ""}
+                  onClick={() => setCategory(item)}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
-          </div>
-        </div>
 
-        <div className="engineeringSectionHeader">
-          <span>CAPABILITIES</span>
-          <h3>Technology without limits.</h3>
-        </div>
-
-        <div className="engineeringGrid">
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">01</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <path d="M18 16h28v32H18z"/>
-                  <path d="M25 24h14M25 32h14M25 40h8"/>
-                  <path d="M46 24l8-5M46 40l8 5"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Software &amp; Application Development</h4>
-            <p>Custom platforms, applications, APIs, backend systems and specialized software engineered around your requirements.</p>
-            <span className="engineeringTag">SOFTWARE SYSTEMS</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">02</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <circle cx="32" cy="32" r="19"/>
-                  <circle cx="32" cy="32" r="6"/>
-                  <path d="M32 7v9M32 48v9M7 32h9M48 32h9"/>
-                  <path d="M17 17l7 7M40 40l7 7M47 17l-7 7M24 40l-7 7"/>
-                </svg>
-              </div>
-            </div>
-            <h4>AI &amp; Machine Learning</h4>
-            <p>AI assistants, intelligent automation, computer vision, machine learning and custom intelligence systems.</p>
-            <span className="engineeringTag">ARTIFICIAL INTELLIGENCE</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">03</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <rect x="17" y="21" width="30" height="25" rx="4"/>
-                  <circle cx="26" cy="32" r="3"/>
-                  <circle cx="38" cy="32" r="3"/>
-                  <path d="M25 40h14M32 21V13M27 13h10"/>
-                  <path d="M11 28v12M53 28v12"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Robotics Engineering</h4>
-            <p>Autonomous robots, navigation systems, control software, robotic platforms and intelligent machines.</p>
-            <span className="engineeringTag">ROBOTICS</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">04</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <rect x="15" y="15" width="34" height="34" rx="3"/>
-                  <rect x="25" y="25" width="14" height="14"/>
-                  <path d="M21 9v6M32 9v6M43 9v6M21 49v6M32 49v6M43 49v6"/>
-                  <path d="M9 21h6M9 32h6M9 43h6M49 21h6M49 32h6M49 43h6"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Embedded Systems</h4>
-            <p>Hardware integration, embedded software, sensors, controllers and connected intelligent devices.</p>
-            <span className="engineeringTag">HARDWARE / EMBEDDED</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">05</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <circle cx="20" cy="32" r="7"/>
-                  <circle cx="44" cy="20" r="7"/>
-                  <circle cx="44" cy="44" r="7"/>
-                  <path d="M26 29l11-6M26 35l11 6"/>
-                  <path d="M44 27v10"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Automation &amp; Industrial Systems</h4>
-            <p>Process automation, intelligent control systems, monitoring platforms and industrial technology.</p>
-            <span className="engineeringTag">AUTOMATION</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">06</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <path d="M32 10l20 8v14c0 12-8 19-20 23C20 51 12 44 12 32V18z"/>
-                  <path d="M23 32l6 6 13-14"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Cybersecurity Engineering</h4>
-            <p>Security architecture, automated security systems, vulnerability assessment and defensive technology.</p>
-            <span className="engineeringTag">SECURITY SYSTEMS</span>
-          </article>
-
-          <article className="engineeringCard">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">07</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <path d="M16 42h32"/>
-                  <path d="M20 42V28h24v14"/>
-                  <path d="M26 28v-8h12v8"/>
-                  <circle cx="20" cy="49" r="3"/>
-                  <circle cx="44" cy="49" r="3"/>
-                  <path d="M32 20V11M27 15l5-5 5 5"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Cloud &amp; Infrastructure</h4>
-            <p>Cloud platforms, APIs, databases, deployment infrastructure and scalable technology systems.</p>
-            <span className="engineeringTag">CLOUD / INFRASTRUCTURE</span>
-          </article>
-
-          <article className="engineeringCard engineeringCardFeatured">
-            <div className="engineeringCardTop">
-              <span className="engineeringNumber">08</span>
-              <div className="engineeringIcon">
-                <svg viewBox="0 0 64 64">
-                  <path d="M32 8l6 17 18 2-14 12 4 18-14-10-14 10 4-18L8 27l18-2z"/>
-                </svg>
-              </div>
-            </div>
-            <h4>Custom Engineering Projects</h4>
-            <p>Have a unique technical challenge? We design and develop solutions around your exact requirements.</p>
-            <span className="engineeringTag">CUSTOM R&amp;D</span>
-          </article>
-
-        </div>
-
-        <div className="engineeringCTA">
-          <div className="engineeringCTAIcon">
-            <svg viewBox="0 0 64 64">
-              <path d="M32 8v48M8 32h48"/>
-              <circle cx="32" cy="32" r="22"/>
-            </svg>
+            <label className="searchBox">
+              <Search size={18} />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="SEARCH SYSTEMS..."
+              />
+            </label>
           </div>
 
-          <div className="engineeringCTAText">
-            <span>HAVE A PROJECT IN MIND?</span>
-            <h3>Let's build something extraordinary.</h3>
-            <p>Bring us the problem. We'll engineer the technology.</p>
-          </div>
-
-          <a className="engineeringCTAButton" href="mailto:contact@space-age-robotics.com">
-            <span>CONTACT ENGINEERING</span>
-            <strong>→</strong>
-          </a>
-        </div>
-
-      </section>
-
-
-        <section id="robotics-catalog" className="roboticsCatalog">
-
-  <div className="catalogTop">
-
-    <div className="catalogIntro">
-      <div className="catalogEyebrow">
-        <span className="catalogPulse"></span>
-        SPACE AGE ROBOTICS / SYSTEM CATALOG
-      </div>
-
-      <h2>
-        Explore the
-        <span> Robotics Universe.</span>
-      </h2>
-
-      <p>
-        Autonomous machines, intelligent systems and advanced robotics
-        engineered for every environment.
-      </p>
-    </div>
-
-    <div className="catalogTelemetry">
-      <div>
-        <strong>LIVE</strong>
-        <span>SYSTEM INDEX</span>
-      </div>
-      <div>
-        <strong>24+</strong>
-        <span>PRODUCTS</span>
-      </div>
-      <div>
-        <strong>28</strong>
-        <span>CLASSES</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div className="catalogNavigation">
-
-    <button
-      className={category === "ALL" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ALL")}
-    >
-      <span className="catalogTabNumber">00</span>
-      <span>ALL SYSTEMS</span>
-    </button>
-
-    <button
-      className={category === "ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ROBOTICS")}
-    >
-      <span className="catalogTabNumber">01</span>
-      <span>ROBOTICS</span>
-    </button>
-
-    <button
-      className={category === "AI SYSTEMS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AI SYSTEMS")}
-    >
-      <span className="catalogTabNumber">02</span>
-      <span>AI SYSTEMS</span>
-    </button>
-
-    <button
-      className={category === "SPACE TECH" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SPACE TECH")}
-    >
-      <span className="catalogTabNumber">03</span>
-      <span>SPACE TECH</span>
-    </button>
-
-    <button
-      className={category === "HUMANOID ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("HUMANOID ROBOTS")}
-    >
-      <span className="catalogTabNumber">04</span>
-      <span>HUMANOIDS</span>
-    </button>
-
-    <button
-      className={category === "DRONES" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("DRONES")}
-    >
-      <span className="catalogTabNumber">05</span>
-      <span>DRONES</span>
-    </button>
-
-    <button
-      className={category === "ROBOT MOWERS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("ROBOT MOWERS")}
-    >
-      <span className="catalogTabNumber">06</span>
-      <span>MOWERS</span>
-    </button>
-
-    <button
-      className={category === "AUTONOMOUS ROVERS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AUTONOMOUS ROVERS")}
-    >
-      <span className="catalogTabNumber">07</span>
-      <span>ROVERS</span>
-    </button>
-
-    <button
-      className={category === "INDUSTRIAL ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("INDUSTRIAL ROBOTS")}
-    >
-      <span className="catalogTabNumber">08</span>
-      <span>INDUSTRIAL</span>
-    </button>
-
-    <button
-      className={category === "SECURITY ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SECURITY ROBOTS")}
-    >
-      <span className="catalogTabNumber">09</span>
-      <span>SECURITY</span>
-    </button>
-
-    <button
-      className={category === "AGRICULTURAL ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("AGRICULTURAL ROBOTS")}
-    >
-      <span className="catalogTabNumber">10</span>
-      <span>AGRICULTURE</span>
-    </button>
-
-    <button
-      className={category === "SPACE ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("SPACE ROBOTICS")}
-    >
-      <span className="catalogTabNumber">11</span>
-      <span>SPACE ROBOTICS</span>
-    </button>
-
-    <button
-      className={category === "UNDERWATER ROBOTICS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("UNDERWATER ROBOTICS")}
-    >
-      <span className="catalogTabNumber">12</span>
-      <span>UNDERWATER</span>
-    </button>
-
-    <button
-      className={category === "CONSTRUCTION ROBOTS" ? "catalogTab active" : "catalogTab"}
-      onClick={() => setCategory("CONSTRUCTION ROBOTS")}
-    >
-      <span className="catalogTabNumber">13</span>
-      <span>CONSTRUCTION</span>
-    </button>
-
-  </div>
-
-</section>
-<section className="section catalogProducts" id="shop"><div className="catalogProductsHeader"><span>AVAILABLE SYSTEMS</span><strong>{filteredProducts.length} UNITS</strong></div><div className="productGrid">
+          <div className="productGrid">
             {filteredProducts.map((product) => {
               const Icon = product.icon
 
@@ -1011,8 +571,8 @@ function App() {
           <img src={`${BASE}logo.jpg`} alt="" />
           <strong>SPACE AGE ROBOTICS</strong>
         </div>
-        <span>Â© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
-        <a href="#top">BACK TO TOP â†‘</a>
+        <span>© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
+        <a href="#top">BACK TO TOP ↑</a>
       </footer>
 
       {cartOpen && (
@@ -1144,10 +704,3 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
-
-
-
-
-
-
-
