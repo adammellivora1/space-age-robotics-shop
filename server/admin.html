@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAR / Alibaba Importer</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(45,166,255,.10), transparent 35%),
+    #05080d;
+  color: #eaf6ff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+  width: min(900px, 92%);
+  padding: 48px;
+  border: 1px solid rgba(45,166,255,.3);
+  background: #070d14;
+  box-shadow: 0 0 80px rgba(45,166,255,.08);
+}
+
+.eyebrow {
+  color: #2da6ff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.subtitle {
+  margin-top: 12px;
+  margin-bottom: 40px;
+  color: #8092a5;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8092a5;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+input {
+  flex: 1;
+  padding: 18px;
+  background: #03070b;
+  border: 1px solid #20384c;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #2da6ff;
+}
+
+button {
+  padding: 0 30px;
+  border: 0;
+  background: #2da6ff;
+  color: #03101a;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+#result {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #173047;
+  background: #03070b;
+}
+
+.ok {
+  color: #4de397;
+}
+
+.error {
+  color: #ff6678;
+}
+
+.status {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #172634;
+  color: #62788b;
+  font-size: 12px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #4de397;
+  box-shadow: 0 0 10px #4de397;
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+
+  <div class="eyebrow">
+    SPACE AGE ROBOTICS / ADMIN SYSTEM
+  </div>
+
+  <h1>Alibaba Product Importer</h1>
+
+  <div class="subtitle">
+    Import supplier products into the Space Age Robotics catalog.
+  </div>
+
+  <label>ALIBABA PRODUCT URL</label>
+
+  <div class="row">
+    <input
+      id="url"
+      placeholder="Paste Alibaba product URL..."
+    >
+
+    <button onclick="importProduct()">
+      IMPORT
+    </button>
+  </div>
+
+  <div id="result"></div>
+
+  <div class="status">
+    <span class="dot"></span>
+    SAR IMPORT API ONLINE
+  </div>
+
+</div>
+
+<script>
+
+async function importProduct() {
+
+  const url = document.getElementById("url").value.trim()
+  const result = document.getElementById("result")
+
+  result.style.display = "block"
+
+  if (!url) {
+    result.innerHTML =
+      '<div class="error">Paste an Alibaba product URL first.</div>'
+    return
+  }
+
+  result.innerHTML = "Scanning Alibaba product..."
+
+  try {
+
+    const response = await fetch("/api/alibaba/import", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ url })
+    })
+
+    const data = await response.json()
+
+    if (!data.ok) {
+      result.innerHTML =
+        '<div class="error">' + data.error + '</div>'
+      return
+    }
+
+    result.innerHTML = `
+      <div class="ok">PRODUCT DETECTED</div>
+      <br>
+      Alibaba Product ID:
+      <strong>${data.productId}</strong>
+      <br><br>
+      ${data.message}
+    `
+
+  } catch (error) {
+
+    result.innerHTML =
+      '<div class="error">Could not connect to importer API.</div>'
+
+  }
+}
+
+</script>
+
+</body>
+</html>
