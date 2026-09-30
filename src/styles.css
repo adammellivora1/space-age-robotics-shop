@@ -1174,3 +1174,500 @@ footer a:hover {
   }
 }
 
+
+/* =========================================================
+   SPACE AGE ROBOTICS — ENGINEERING / SOFTWARE SECTION
+   ========================================================= */
+
+.engineeringSection {
+  position: relative;
+  overflow: hidden;
+  padding: 130px 6vw 110px;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(45,166,255,.13), transparent 32%),
+    radial-gradient(circle at 10% 75%, rgba(45,166,255,.07), transparent 28%),
+    linear-gradient(180deg, #05070a 0%, #080b10 100%);
+  border-top: 1px solid rgba(45,166,255,.12);
+  border-bottom: 1px solid rgba(45,166,255,.12);
+}
+
+.engineeringSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(45,166,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,166,255,.035) 1px, transparent 1px);
+  background-size: 55px 55px;
+}
+
+.engineeringSection::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  top: -350px;
+  right: -250px;
+  border: 1px solid rgba(45,166,255,.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 70px rgba(45,166,255,.018),
+    0 0 0 140px rgba(45,166,255,.014),
+    0 0 0 210px rgba(45,166,255,.01);
+  pointer-events: none;
+}
+
+.engineeringHero,
+.engineeringSectionHeader,
+.engineeringGrid,
+.engineeringCTA {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.engineeringHero {
+  min-height: 530px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.engineeringEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: 11px;
+  letter-spacing: .25em;
+  font-weight: 700;
+  color: #2da6ff;
+}
+
+.engineeringStatus {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2da6ff;
+  box-shadow: 0 0 14px #2da6ff;
+  animation: engineeringPulse 2s infinite;
+}
+
+@keyframes engineeringPulse {
+  0%, 100% { opacity: .45; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.engineeringHero h2 {
+  max-width: 800px;
+  margin: 0;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  font-weight: 800;
+  color: #f4f8fc;
+}
+
+.engineeringHero h2 span {
+  display: block;
+  color: #2da6ff;
+  text-shadow: 0 0 35px rgba(45,166,255,.28);
+}
+
+.engineeringLead {
+  max-width: 720px;
+  margin: 32px 0 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: rgba(235,242,250,.78);
+}
+
+.engineeringDescription {
+  max-width: 650px;
+  margin: 25px 0 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(235,242,250,.48);
+}
+
+.engineeringHeroLine {
+  width: 110px;
+  height: 2px;
+  margin-top: 30px;
+  background: #2da6ff;
+  box-shadow: 0 0 20px rgba(45,166,255,.65);
+}
+
+.engineeringVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+.engineeringCore {
+  position: relative;
+  width: min(420px, 75vw);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coreRing {
+  position: absolute;
+  border: 1px solid rgba(45,166,255,.22);
+  border-radius: 50%;
+}
+
+.coreRingOne {
+  inset: 5%;
+  animation: coreSpin 22s linear infinite;
+  border-top-color: #2da6ff;
+}
+
+.coreRingTwo {
+  inset: 16%;
+  border-style: dashed;
+  animation: coreSpinReverse 18s linear infinite;
+}
+
+.coreRingThree {
+  inset: 29%;
+  border-color: rgba(45,166,255,.35);
+  box-shadow: inset 0 0 40px rgba(45,166,255,.04);
+}
+
+@keyframes coreSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes coreSpinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+.coreCenter {
+  width: 145px;
+  height: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(45,166,255,.65);
+  background: rgba(7,14,21,.88);
+  box-shadow:
+    0 0 40px rgba(45,166,255,.12),
+    inset 0 0 35px rgba(45,166,255,.08);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.coreCenter svg {
+  width: 65px;
+  height: 65px;
+  fill: none;
+  stroke: #2da6ff;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px rgba(45,166,255,.65));
+}
+
+.coreLabel {
+  margin-top: 4px;
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.5);
+}
+
+.engineeringSectionHeader {
+  margin-top: 80px;
+  margin-bottom: 35px;
+}
+
+.engineeringSectionHeader > span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: #2da6ff;
+}
+
+.engineeringSectionHeader h3 {
+  margin: 10px 0 0;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -.035em;
+  color: #f3f7fb;
+}
+
+.engineeringGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.engineeringCard {
+  position: relative;
+  min-height: 300px;
+  padding: 27px;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(18,25,34,.95), rgba(7,11,16,.96));
+  border: 1px solid rgba(255,255,255,.07);
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.engineeringCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(45,166,255,.7), transparent);
+  opacity: .45;
+}
+
+.engineeringCard::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  right: -75px;
+  bottom: -75px;
+  border-radius: 50%;
+  background: rgba(45,166,255,.07);
+  filter: blur(18px);
+}
+
+.engineeringCard:hover {
+  transform: translateY(-7px);
+  border-color: rgba(45,166,255,.5);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.35),
+    0 0 35px rgba(45,166,255,.07);
+}
+
+.engineeringCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.engineeringNumber {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: rgba(255,255,255,.32);
+}
+
+.engineeringIcon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(45,166,255,.22);
+  background: rgba(45,166,255,.045);
+  box-shadow: inset 0 0 25px rgba(45,166,255,.025);
+}
+
+.engineeringIcon svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: #2da6ff;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 5px rgba(45,166,255,.35));
+}
+
+.engineeringCard h4 {
+  margin: 0 0 13px;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: #f0f5fa;
+}
+
+.engineeringCard p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(225,234,242,.5);
+}
+
+.engineeringTag {
+  position: absolute;
+  bottom: 24px;
+  left: 27px;
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: .16em;
+  color: rgba(45,166,255,.65);
+}
+
+.engineeringCardFeatured {
+  background:
+    radial-gradient(circle at 80% 15%, rgba(45,166,255,.14), transparent 45%),
+    linear-gradient(145deg, rgba(14,28,40,.98), rgba(6,11,16,.98));
+  border-color: rgba(45,166,255,.22);
+}
+
+.engineeringCTA {
+  margin-top: 55px;
+  padding: 30px 34px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  border: 1px solid rgba(45,166,255,.28);
+  background:
+    linear-gradient(100deg, rgba(45,166,255,.08), rgba(10,16,23,.92));
+  box-shadow: inset 0 0 45px rgba(45,166,255,.025);
+}
+
+.engineeringCTAIcon {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(45,166,255,.45);
+}
+
+.engineeringCTAIcon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: #2da6ff;
+  stroke-width: 1.5;
+}
+
+.engineeringCTAText {
+  flex: 1;
+}
+
+.engineeringCTAText > span {
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: #2da6ff;
+  font-weight: 700;
+}
+
+.engineeringCTAText h3 {
+  margin: 5px 0 3px;
+  font-size: 24px;
+  color: #f3f7fb;
+}
+
+.engineeringCTAText p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+}
+
+.engineeringCTAButton {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 15px 20px;
+  color: #061018;
+  background: #2da6ff;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  transition: all .3s ease;
+  box-shadow: 0 0 25px rgba(45,166,255,.18);
+}
+
+.engineeringCTAButton strong {
+  font-size: 18px;
+  line-height: 0;
+}
+
+.engineeringCTAButton:hover {
+  transform: translateX(4px);
+  box-shadow: 0 0 35px rgba(45,166,255,.38);
+}
+
+.engineeringOrb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.engineeringOrbOne {
+  width: 5px;
+  height: 5px;
+  top: 25%;
+  left: 8%;
+  background: #2da6ff;
+  box-shadow:
+    0 0 12px #2da6ff,
+    120px 100px 0 -1px rgba(45,166,255,.5),
+    300px -80px 0 -2px rgba(45,166,255,.35);
+}
+
+.engineeringOrbTwo {
+  width: 3px;
+  height: 3px;
+  bottom: 20%;
+  right: 12%;
+  background: #2da6ff;
+  box-shadow:
+    0 0 10px #2da6ff,
+    -150px 80px 0 -1px rgba(45,166,255,.5),
+    -300px -100px 0 -1px rgba(45,166,255,.3);
+}
+
+@media (max-width: 1100px) {
+  .engineeringGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .engineeringHero {
+    grid-template-columns: 1fr;
+  }
+
+  .engineeringVisual {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 700px) {
+  .engineeringSection {
+    padding: 90px 20px 75px;
+  }
+
+  .engineeringHero h2 {
+    font-size: 48px;
+  }
+
+  .engineeringGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .engineeringCard {
+    min-height: 280px;
+  }
+
+  .engineeringCTA {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .engineeringCTAButton {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .engineeringCore {
+    width: 320px;
+  }
+}
