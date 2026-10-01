@@ -1,217 +1,385 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAR / Alibaba Importer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Space Age Robotics — Smart Importer</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(45,166,255,.10), transparent 35%),
-    #05080d;
-  color: #eaf6ff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.panel {
-  width: min(900px, 92%);
-  padding: 48px;
-  border: 1px solid rgba(45,166,255,.3);
-  background: #070d14;
-  box-shadow: 0 0 80px rgba(45,166,255,.08);
-}
-
-.eyebrow {
-  color: #2da6ff;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-bottom: 16px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 42px;
-}
-
-.subtitle {
-  margin-top: 12px;
-  margin-bottom: 40px;
-  color: #8092a5;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  color: #8092a5;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.row {
-  display: flex;
-  gap: 12px;
-}
-
-input {
-  flex: 1;
-  padding: 18px;
-  background: #03070b;
-  border: 1px solid #20384c;
-  color: white;
-  font-size: 15px;
-  outline: none;
-}
-
-input:focus {
-  border-color: #2da6ff;
-}
-
-button {
-  padding: 0 30px;
-  border: 0;
-  background: #2da6ff;
-  color: #03101a;
-  font-weight: bold;
-  cursor: pointer;
-  letter-spacing: 1px;
-}
-
-button:hover {
-  filter: brightness(1.15);
-}
-
-#result {
-  display: none;
-  margin-top: 25px;
-  padding: 20px;
-  border: 1px solid #173047;
-  background: #03070b;
-}
-
-.ok {
-  color: #4de397;
-}
-
-.error {
-  color: #ff6678;
-}
-
-.status {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #172634;
-  color: #62788b;
-  font-size: 12px;
-}
-
-.dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: #4de397;
-  box-shadow: 0 0 10px #4de397;
-}
+*{box-sizing:border-box}
+body{margin:0;background:#05070b;color:#e8f1ff;font-family:Arial,Helvetica,sans-serif}
+.wrap{max-width:1400px;margin:0 auto;padding:32px}
+header{margin-bottom:28px}
+h1{margin:0 0 8px;font-size:30px;letter-spacing:1px}
+.sub{color:#7f91aa}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{background:#0a0f17;border:1px solid #1b2b40;border-radius:16px;padding:24px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+label{display:block;margin:18px 0 8px;color:#91a5bf;font-size:13px;font-weight:bold;letter-spacing:.5px}
+input,textarea,select{width:100%;border:1px solid #263a52;background:#070b11;color:#fff;border-radius:10px;padding:13px 14px;font-size:15px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#168cff;box-shadow:0 0 0 2px rgba(22,140,255,.12)}
+textarea{min-height:150px;resize:vertical}
+button{border:0;border-radius:10px;padding:13px 18px;cursor:pointer;font-weight:bold;color:white;background:#0878e8}
+button:hover{background:#1590ff}
+button.secondary{background:#172333;border:1px solid #29415c}
+.hidden{display:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.notice{margin-top:14px;padding:12px 14px;border-radius:10px;background:#081523;border:1px solid #163b60;color:#9fcfff;font-size:13px}
+.internal{border-color:#4d3a12;background:#171207;color:#e7c66c}
+.priceBox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.priceCard{background:#080d14;border:1px solid #1c3047;border-radius:12px;padding:16px}
+.priceCard.internalCard{border-color:#57420e;background:#151105}
+.priceLabel{color:#8296ae;font-size:12px;font-weight:bold;letter-spacing:.5px;margin-bottom:8px}
+.priceValue{font-size:24px;font-weight:bold}
+.internalCard .priceValue{color:#e7c66c}
+.retailCard .priceValue{color:#4da3ff}
+.images{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.imageCard{position:relative;border:1px solid #20354c;border-radius:10px;overflow:hidden;background:#05080d}
+.imageCard img{display:block;width:100%;height:130px;object-fit:cover}
+.remove{position:absolute;top:6px;right:6px;width:28px;height:28px;padding:0;border-radius:50%;background:rgba(0,0,0,.75);border:1px solid #596a7e}
+.preview{background:#060a10;border:1px solid #1b2b40;border-radius:14px;padding:20px}
+.preview h2{margin-top:0}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.meta div{background:#0a111b;border:1px solid #17283a;border-radius:9px;padding:12px}
+.meta span{display:block;color:#71869f;font-size:11px;margin-bottom:5px}
+.status{margin-top:18px;padding:12px;border-radius:10px;background:#0a1018;border:1px solid #1d3045;color:#9eb0c4;min-height:20px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.priceBox{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
 
-<div class="panel">
+<div class="wrap">
 
-  <div class="eyebrow">
-    SPACE AGE ROBOTICS / ADMIN SYSTEM
-  </div>
+<header>
+<h1>SPACE AGE ROBOTICS / SMART IMPORTER</h1>
+<div class="sub">Internal product importer — supplier pricing is never customer-facing.</div>
+</header>
 
-  <h1>Alibaba Product Importer</h1>
+<div class="grid">
 
-  <div class="subtitle">
-    Import supplier products into the Space Age Robotics catalog.
-  </div>
+<section class="panel">
 
-  <label>ALIBABA PRODUCT URL</label>
+<label>ALIBABA PRODUCT URL</label>
+<input id="url" placeholder="https://www.alibaba.com/product-detail/...">
 
-  <div class="row">
-    <input
-      id="url"
-      placeholder="Paste Alibaba product URL..."
-    >
+<div class="actions">
+<button onclick="importProduct()">IMPORT FROM ALIBABA</button>
+</div>
 
-    <button onclick="importProduct()">
-      IMPORT
-    </button>
-  </div>
+<div id="editor" class="hidden">
 
-  <div id="result"></div>
+<label>SAR PRODUCT NAME</label>
+<input id="name">
 
-  <div class="status">
-    <span class="dot"></span>
-    SAR IMPORT API ONLINE
-  </div>
+<label>CATEGORY</label>
+<select id="category">
+<option>ROBOTICS</option>
+<option>AI SYSTEMS</option>
+<option>SPACE TECH</option>
+<option>HUMANOIDS</option>
+<option>DRONES</option>
+<option>MOWERS</option>
+<option>ROVERS</option>
+<option>INDUSTRIAL</option>
+<option>SECURITY</option>
+<option>AGRICULTURE</option>
+<option>SPACE ROBOTICS</option>
+<option>UNDERWATER</option>
+<option>CONSTRUCTION</option>
+</select>
 
+<label>PRODUCT DESCRIPTION</label>
+<textarea id="description"></textarea>
+
+<div class="notice internal">
+<strong>INTERNAL ONLY</strong> — Supplier price is never displayed on the public shop.
+</div>
+
+<div class="priceBox">
+
+<div class="priceCard internalCard">
+<div class="priceLabel">SUPPLIER PRICE (€) — INTERNAL</div>
+<div class="priceValue" id="supplierDisplay">€0</div>
+</div>
+
+<div class="priceCard">
+<div class="priceLabel">SUGGESTED RETAIL PRICE (€)</div>
+<div class="priceValue" id="suggestedDisplay">€0</div>
+</div>
+
+</div>
+
+<label>YOUR RETAIL PRICE (€)</label>
+<input id="price" type="number" min="0" step="1">
+
+<div class="notice">
+Suggested price is automatically calculated as <strong>2× supplier price</strong>.
+You can change your retail price manually before adding the product.
+</div>
+
+<div class="actions">
+<button onclick="saveEdits()">UPDATE PREVIEW</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="panel">
+
+<div class="preview">
+
+<h2 id="previewName">No product imported</h2>
+
+<div class="meta">
+
+<div>
+<span>CATEGORY</span>
+<strong id="previewCategory">—</strong>
+</div>
+
+<div>
+<span>PUBLIC RETAIL PRICE</span>
+<strong id="previewPrice">—</strong>
+</div>
+
+<div>
+<span>INTERNAL SUPPLIER PRICE</span>
+<strong id="previewSupplier">—</strong>
+</div>
+
+<div>
+<span>PRODUCT CODE</span>
+<strong id="previewCode">—</strong>
+</div>
+
+</div>
+
+<label>DESCRIPTION</label>
+<div id="previewDescription" class="notice">—</div>
+
+<label>PRODUCT IMAGES</label>
+<div id="images" class="images"></div>
+
+<div class="actions">
+<button class="secondary" onclick="copyProduct()">COPY JSON</button>
+<button onclick="addToShop()">ADD TO SHOP</button>
+</div>
+
+<div id="status" class="status"></div>
+
+</div>
+
+</section>
+
+</div>
 </div>
 
 <script>
 
-async function importProduct() {
+let product = null;
 
-  const url = document.getElementById("url").value.trim()
-  const result = document.getElementById("result")
+function money(value){
+const n=Number(value||0);
+return "€"+n.toLocaleString("de-DE",{minimumFractionDigits:0,maximumFractionDigits:0});
+}
 
-  result.style.display = "block"
+function calculateSuggestedPrice(supplierPrice){
+return Math.ceil(Number(supplierPrice||0)*2);
+}
 
-  if (!url) {
-    result.innerHTML =
-      '<div class="error">Paste an Alibaba product URL first.</div>'
-    return
-  }
+async function importProduct(){
 
-  result.innerHTML = "Scanning Alibaba product..."
+const url=document.getElementById("url").value.trim();
+const status=document.getElementById("status");
 
-  try {
+if(!url){
+status.textContent="Please enter an Alibaba product URL.";
+return;
+}
 
-    const response = await fetch("/api/alibaba/import", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ url })
-    })
+status.textContent="Importing product...";
 
-    const data = await response.json()
+try{
 
-    if (!data.ok) {
-      result.innerHTML =
-        '<div class="error">' + data.error + '</div>'
-      return
-    }
+const response=await fetch("/api/scrape-alibaba",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({url})
+});
 
-    result.innerHTML = `
-      <div class="ok">PRODUCT DETECTED</div>
-      <br>
-      Alibaba Product ID:
-      <strong>${data.productId}</strong>
-      <br><br>
-      ${data.message}
-    `
+const data=await response.json();
 
-  } catch (error) {
+if(!response.ok){
+throw new Error(data.error||"Import failed.");
+}
 
-    result.innerHTML =
-      '<div class="error">Could not connect to importer API.</div>'
+const supplierPrice=Number(
+data.product?.supplierPrice ||
+data.product?.price ||
+0
+);
 
-  }
+const suggestedPrice=calculateSuggestedPrice(supplierPrice);
+
+product={
+...data.product,
+supplierPrice:supplierPrice,
+suggestedRetailPrice:suggestedPrice,
+price:suggestedPrice
+};
+
+document.getElementById("editor").classList.remove("hidden");
+
+document.getElementById("name").value=product.name||"";
+document.getElementById("category").value=product.category||"ROBOTICS";
+document.getElementById("description").value=product.description||"";
+document.getElementById("price").value=product.price;
+
+document.getElementById("supplierDisplay").textContent=money(product.supplierPrice);
+document.getElementById("suggestedDisplay").textContent=money(product.suggestedRetailPrice);
+
+renderPreview();
+
+status.textContent="Product imported successfully.";
+
+}catch(error){
+
+console.error(error);
+status.textContent="Import error: "+error.message;
+
+}
+
+}
+
+function saveEdits(){
+
+if(!product)return;
+
+product.name=document.getElementById("name").value.trim();
+product.category=document.getElementById("category").value;
+product.description=document.getElementById("description").value.trim();
+product.price=Number(document.getElementById("price").value||0);
+
+renderPreview();
+
+document.getElementById("status").textContent="Preview updated.";
+
+}
+
+function renderPreview(){
+
+if(!product)return;
+
+document.getElementById("previewName").textContent=product.name||"Unnamed product";
+document.getElementById("previewCategory").textContent=product.category||"—";
+document.getElementById("previewPrice").textContent=money(product.price);
+document.getElementById("previewSupplier").textContent=money(product.supplierPrice);
+document.getElementById("previewCode").textContent=product.code||"—";
+document.getElementById("previewDescription").textContent=product.description||"—";
+
+renderImages();
+
+}
+
+function renderImages(){
+
+const container=document.getElementById("images");
+container.innerHTML="";
+
+if(!product||!Array.isArray(product.images))return;
+
+product.images.forEach((src,index)=>{
+
+const card=document.createElement("div");
+card.className="imageCard";
+
+const img=document.createElement("img");
+img.src=src;
+img.alt="";
+
+const remove=document.createElement("button");
+remove.className="remove";
+remove.textContent="×";
+remove.onclick=()=>removeImage(index);
+
+card.appendChild(img);
+card.appendChild(remove);
+
+container.appendChild(card);
+
+});
+
+}
+
+function removeImage(index){
+
+if(!product||!Array.isArray(product.images))return;
+
+product.images.splice(index,1);
+
+renderImages();
+
+}
+
+function copyProduct(){
+
+if(!product){
+document.getElementById("status").textContent="No product imported.";
+return;
+}
+
+saveEdits();
+
+navigator.clipboard.writeText(
+JSON.stringify(product,null,2)
+);
+
+document.getElementById("status").textContent=
+"Internal product JSON copied.";
+
+}
+
+function addToShop(){
+
+if(!product){
+document.getElementById("status").textContent="No product imported.";
+return;
+}
+
+saveEdits();
+
+const publicProduct={
+
+id:product.id||product.code||("SAR-"+Date.now()),
+
+code:product.code||"",
+
+name:product.name,
+
+category:product.category,
+
+description:product.description,
+
+price:Number(product.price||0),
+
+images:Array.isArray(product.images)
+?[...product.images]
+:[]
+
+};
+
+localStorage.setItem(
+"sar_imported_product",
+JSON.stringify(publicProduct)
+);
+
+document.getElementById("status").textContent=
+"Product prepared for the shop. Supplier price was NOT exported.";
+
+console.log("PUBLIC PRODUCT:",publicProduct);
+console.log("INTERNAL SUPPLIER PRICE:",product.supplierPrice);
+
 }
 
 </script>
