@@ -2354,3 +2354,6 @@ footer a:hover {
   display: none;
 }
 
+
+/* Product description wrapping fix */
+.productGrid .productCard p { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; line-height: 1.6; }

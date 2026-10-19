@@ -1,4 +1,4 @@
-﻿import express from "express";
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
@@ -1095,6 +1095,127 @@ app.post(
   }
 );
 
+
+/* =========================================================
+   PUBLISH PRODUCT TO GITHUB PAGES CATALOG
+========================================================= */
+app.post("/api/publish-product", async (req, res) => {
+  try {
+    const token = process.env.GITHUB_TOKEN;
+    const owner = process.env.GITHUB_OWNER;
+    const repo = process.env.GITHUB_REPO;
+    const branch = process.env.GITHUB_BRANCH || "main";
+
+    if (!token || !owner || !repo) {
+      return res.status(500).json({
+        error: "Missing GITHUB_TOKEN, GITHUB_OWNER or GITHUB_REPO in .env"
+      });
+    }
+
+    const incoming = req.body || {};
+    const name = String(incoming.name || "").trim();
+    const price = Number(incoming.price);
+
+    if (!name || !Number.isFinite(price) || price <= 0) {
+      return res.status(400).json({
+        error: "Product name and a price greater than zero are required."
+      });
+    }
+
+    const product = {
+      id: String(incoming.id || incoming.code || ("sar-" + Date.now())),
+      code: String(incoming.code || ""),
+      name,
+      category: String(incoming.category || "ROBOTICS"),
+      description: String(incoming.description || ""),
+      price,
+      images: Array.isArray(incoming.images)
+        ? incoming.images.filter(url =>
+            typeof url === "string" && /^https?:\/\//i.test(url)
+          )
+        : []
+    };
+
+    const apiUrl =
+      `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/public/products.json`;
+
+    const headers = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "Space-Age-Robotics-Shop"
+    };
+
+    let currentProducts = [];
+    let sha;
+
+    const existingResponse = await fetch(
+      `${apiUrl}?ref=${encodeURIComponent(branch)}`,
+      { headers }
+    );
+
+    if (existingResponse.ok) {
+      const existingFile = await existingResponse.json();
+      sha = existingFile.sha;
+
+      try {
+        currentProducts = JSON.parse(
+          Buffer.from(existingFile.content || "", "base64").toString("utf8")
+        );
+      } catch {
+        currentProducts = [];
+      }
+
+      if (!Array.isArray(currentProducts)) currentProducts = [];
+    } else if (existingResponse.status !== 404) {
+      const details = await existingResponse.text();
+      console.error("GitHub catalog read failed:", existingResponse.status, details);
+      return res.status(502).json({
+        error: "GitHub could not read the catalog. Check repository access and token permissions."
+      });
+    }
+
+    const index = currentProducts.findIndex(item => String(item.id) === product.id);
+    if (index >= 0) currentProducts[index] = product;
+    else currentProducts.push(product);
+
+    const payload = {
+      message: `Publish product: ${product.name}`,
+      branch,
+      content: Buffer.from(
+        JSON.stringify(currentProducts, null, 2) + "\n",
+        "utf8"
+      ).toString("base64")
+    };
+
+    if (sha) payload.sha = sha;
+
+    const publishResponse = await fetch(apiUrl, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const publishResult = await publishResponse.json();
+
+    if (!publishResponse.ok) {
+      console.error("GitHub catalog publish failed:", publishResponse.status, publishResult);
+      return res.status(502).json({
+        error: publishResult.message || "GitHub rejected the catalog update."
+      });
+    }
+
+    return res.json({
+      ok: true,
+      product: product.name,
+      count: currentProducts.length,
+      message: "Product committed to GitHub. GitHub Pages may take a few minutes to update."
+    });
+  } catch (error) {
+    console.error("Product publish error:", error);
+    return res.status(500).json({ error: "Publishing failed. Check the importer server terminal." });
+  }
+});
 /* =========================================================
    HEALTH
 ========================================================= */

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -43,6 +43,7 @@ button.secondary{background:#172333;border:1px solid #29415c}
 .meta span{display:block;color:#71869f;font-size:11px;margin-bottom:5px}
 .status{margin-top:18px;padding:12px;border-radius:10px;background:#0a1018;border:1px solid #1d3045;color:#9eb0c4;min-height:20px}
 @media(max-width:900px){.grid{grid-template-columns:1fr}.priceBox{grid-template-columns:1fr}}
+#previewDescription { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; line-height: 1.6; }
 </style>
 </head>
 
@@ -160,6 +161,12 @@ You can change your retail price manually before adding the product.
 
 <label>PRODUCT IMAGES</label>
 <div id="images" class="images"></div>
+<label>ADD MORE PRODUCT IMAGES (ONE URL PER LINE)</label>
+<textarea id="imageUrls" rows="5" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"></textarea>
+<div class="actions">
+<button type="button" onclick="addImagesFromUrls()">ADD IMAGES</button>
+<button type="button" class="secondary" onclick="document.getElementById('imageUrls').value=''">CLEAR LINKS</button>
+</div>
 
 <div class="actions">
 <button class="secondary" onclick="copyProduct()">COPY JSON</button>
@@ -312,6 +319,57 @@ container.appendChild(card);
 
 }
 
+function addImagesFromUrls(){
+    if(!product){
+        document.getElementById("status").textContent="Import a product first.";
+        return;
+    }
+
+    const field=document.getElementById("imageUrls");
+    const urls=field.value.split(/\r?\n/)
+        .map(url=>url.trim())
+        .filter(Boolean);
+
+    const valid=[];
+    const invalid=[];
+
+    urls.forEach(url=>{
+        try{
+            const parsed=new URL(url);
+            if(!["https:","http:"].includes(parsed.protocol)){
+                invalid.push(url);
+                return;
+            }
+            if(!/\.(jpg|jpeg|png|webp|gif|avif)(\?.*)?$/i.test(parsed.href)){
+                invalid.push(url);
+                return;
+            }
+            valid.push(parsed.href);
+        }catch{
+            invalid.push(url);
+        }
+    });
+
+    if(!Array.isArray(product.images)) product.images=[];
+    const existing=new Set(product.images);
+    let added=0;
+
+    valid.forEach(url=>{
+        if(!existing.has(url)){
+            product.images.push(url);
+            existing.add(url);
+            added++;
+        }
+    });
+
+    renderImages();
+    field.value="";
+
+    document.getElementById("status").textContent=
+        added+" image(s) added to preview."+
+        (invalid.length ? " Skipped "+invalid.length+" invalid URL(s)." : "")+
+        " Click ADD TO SHOP to prepare the product.";
+}
 function removeImage(index){
 
 if(!product||!Array.isArray(product.images))return;

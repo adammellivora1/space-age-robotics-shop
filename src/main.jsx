@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   ArrowRight,
@@ -253,6 +253,25 @@ function money(value) {
 }
 
 function App() {
+ const [publishedProducts, setPublishedProducts] = useState([])
+ useEffect(() => {
+   fetch(`${BASE}products.json?t=${Date.now()}`, { cache: "no-store" })
+     .then(r => r.ok ? r.json() : [])
+     .then(data => setPublishedProducts(Array.isArray(data) ? data : []))
+     .catch(err => console.error("Catalog loading failed:", err))
+ }, [])
+ const catalogProducts = useMemo(() => {
+   const merged = new Map(products.map(p => [String(p.id), p]))
+   publishedProducts.forEach(p => {
+     if (!p || !p.id || !p.name) return
+     merged.set(String(p.id), {
+       ...merged.get(String(p.id)),
+       ...p,
+       icon: merged.get(String(p.id))?.icon || Bot
+     })
+   })
+   return Array.from(merged.values())
+ }, [publishedProducts])
   const [category, setCategory] = useState("ALL")
   const [query, setQuery] = useState("")
   const [cart, setCart] = useState([])
@@ -263,7 +282,7 @@ function App() {
   const filteredProducts = useMemo(() => {
     const q = query.trim().toLowerCase()
 
-    return products.filter((product) => {
+    return catalogProducts.filter((product) => {
       const categoryMatch =
         category === "ALL" || product.category === category
 
@@ -276,11 +295,11 @@ function App() {
 
       return categoryMatch && queryMatch
     })
-  }, [category, query])
+  }, [category, query, catalogProducts])
 
   const cartItems = cart
     .map((item) => {
-      const product = products.find((p) => p.id === item.id)
+      const product = catalogProducts.find((p) => p.id === item.id)
       return product ? { ...product, quantity: item.quantity } : null
     })
     .filter(Boolean)
@@ -1144,10 +1163,3 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
-
-
-
-
-
-
-
