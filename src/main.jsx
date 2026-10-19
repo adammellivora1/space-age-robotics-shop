@@ -274,6 +274,7 @@ function App() {
  }, [publishedProducts])
   const [category, setCategory] = useState("ALL")
   const [query, setQuery] = useState("")
+  const [selectedProduct, setSelectedProduct] = useState(null)
   const [cart, setCart] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
@@ -891,10 +892,20 @@ function App() {
               const Icon = product.icon
 
               return (
-                <article className="productCard" key={product.id}>
+                <article className="productCard" key={product.id} role="button" tabIndex={0} onClick={() => setSelectedProduct(product)} onKeyDown={(e) => { if (e.key === "Enter") setSelectedProduct(product) }}>
                   <div className="productVisual">
                     <div className="productCorner">SAR / {product.code}</div>
-                    <Icon size={70} strokeWidth={1} />
+                    {Array.isArray(product.images) && product.images[0] ? (
+                      <img
+                        className="productImage"
+                        src={product.images[0]}
+                        alt={product.name}
+                        loading="lazy"
+                        onError={(e) => { e.currentTarget.style.display = "none" }}
+                      />
+                    ) : (
+                      <Icon size={70} strokeWidth={1} />
+                    )}
                     <div className="productGlow" />
                   </div>
 
@@ -907,7 +918,7 @@ function App() {
 
                     <div className="productBottom">
                       <strong>{money(product.price)}</strong>
-                      <button onClick={() => addToCart(product.id)}>
+                      <button onClick={(e) => { e.stopPropagation(); addToCart(product.id) }}>
                         ADD TO CART
                         <Plus size={16} />
                       </button>
@@ -926,6 +937,33 @@ function App() {
             </div>
           )}
         </section>
+
+        {selectedProduct && (
+          <div className="productModalBackdrop" onClick={() => setSelectedProduct(null)}>
+            <div className="productModal" role="dialog" aria-modal="true" aria-label={selectedProduct.name} onClick={(e) => e.stopPropagation()}>
+              <button className="productModalClose" onClick={() => setSelectedProduct(null)} aria-label="Close product details">×</button>
+              <div className="productModalGallery">
+                {Array.isArray(selectedProduct.images) && selectedProduct.images.length > 0 ? (
+                  selectedProduct.images.map((src, index) => (
+                    <img key={src + index} src={src} alt={`${selectedProduct.name} ${index + 1}`} loading={index > 0 ? "lazy" : "eager"} />
+                  ))
+                ) : (
+                  <div className="productModalFallback"><Bot size={72} /></div>
+                )}
+              </div>
+              <div className="productModalInfo">
+                <span className="productCategory">{selectedProduct.category}</span>
+                <h2>{selectedProduct.name}</h2>
+                <p className="productModalCode">SAR / {selectedProduct.code || selectedProduct.id}</p>
+                <p className="productModalDescription">{selectedProduct.description || "Contact us for further product information."}</p>
+                <strong className="productModalPrice">{money(selectedProduct.price)}</strong>
+                <button className="productModalAdd" onClick={() => { addToCart(selectedProduct.id); setSelectedProduct(null) }}>
+                  ADD TO CART <Plus size={17} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <section className="technology" id="technology">
           <div className="techContent">

@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
   font-family: Inter, Arial, sans-serif;
@@ -2357,3 +2357,52 @@ footer a:hover {
 
 /* Product description wrapping fix */
 .productGrid .productCard p { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; line-height: 1.6; }
+
+/* Imported product imagery and product detail modal */
+.catalogProducts .productCard[role="button"] { cursor: pointer; }
+.catalogProducts .productCard[role="button"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.catalogProducts .productVisual .productImage {
+  position: relative; z-index: 2; width: 100%; height: 250px;
+  object-fit: contain; padding: 24px; transition: transform .25s ease;
+}
+.catalogProducts .productCard:hover .productImage { transform: scale(1.04); }
+.productModalBackdrop {
+  position: fixed; inset: 0; z-index: 9999; padding: 24px;
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto; background: rgba(0,0,0,.82); backdrop-filter: blur(12px);
+}
+.productModal {
+  position: relative; width: min(100%, 1000px); max-height: 90vh; overflow-y: auto;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 28px; padding: 28px; color: white; background: #080d14;
+  border: 1px solid rgba(255,255,255,.14); box-shadow: 0 25px 100px #000;
+}
+.productModalClose {
+  position: absolute; z-index: 3; right: 12px; top: 12px; width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,.2); background: #111923; color: white;
+  font-size: 28px; cursor: pointer;
+}
+.productModalGallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-content: start; }
+.productModalGallery img {
+  display: block; width: 100%; height: 190px; object-fit: contain;
+  background: #0e1621; border: 1px solid rgba(255,255,255,.08);
+}
+.productModalGallery img:first-child { grid-column: 1 / -1; height: 340px; }
+.productModalFallback { grid-column: 1 / -1; min-height: 280px; display: grid; place-items: center; color: var(--accent); }
+.productModalInfo { padding: 28px 8px 12px 0; overflow-wrap: anywhere; }
+.productModalInfo h2 { margin: 12px 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.15; }
+.productModalCode { color: #7d8b9c; font-size: 11px; letter-spacing: .08em; }
+.productModalDescription { margin: 24px 0; color: #c0c8d2; line-height: 1.8; white-space: pre-wrap; }
+.productModalPrice { display: block; margin: 20px 0; font-size: 27px; }
+.productModalAdd {
+  display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
+  padding: 15px; border: 0; background: var(--accent); color: #06101a; font-weight: 700; cursor: pointer;
+}
+@media (max-width: 700px) {
+  .productModalBackdrop { padding: 10px; align-items: flex-start; }
+  .productModal { grid-template-columns: 1fr; gap: 12px; padding: 18px; max-height: none; margin: 10px 0; }
+  .productModalInfo { padding: 8px 0; }
+  .productModalGallery img { height: 130px; }
+  .productModalGallery img:first-child { height: 240px; }
+  .catalogProducts .productVisual .productImage { height: 210px; }
+}
