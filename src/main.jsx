@@ -261,7 +261,7 @@ function App() {
      .catch(err => console.error("Catalog loading failed:", err))
  }, [])
  const catalogProducts = useMemo(() => {
-   const merged = new Map(products.map(p => [String(p.id), p]))
+   const merged = new Map()
    publishedProducts.forEach(p => {
      if (!p || !p.id || !p.name) return
      merged.set(String(p.id), {
@@ -1322,4 +1322,5 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
+
 
