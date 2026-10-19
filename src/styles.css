@@ -2450,3 +2450,23 @@ footer a:hover {
 .sarLightboxPrev{left:18px;top:50%;transform:translateY(-50%)}
 .sarLightboxNext{right:18px;top:50%;transform:translateY(-50%)}
 @media(max-width:800px){.sarProductPage{padding:14px 16px 40px}.sarProductTopbar{align-items:flex-start;flex-direction:column;margin-bottom:20px}.sarProductLayout,.sarReviewGrid{grid-template-columns:1fr}.sarMainImage{height:48vh;min-height:280px}.sarProductDetails h1{font-size:30px}.sarReviews{margin-top:42px}.sarLightbox{padding:20px}.sarLightbox img{max-width:82vw}}
+
+/* Center SAR AI Core in the Engineering hero */
+.engineeringHero {
+  align-items: center;
+}
+
+.engineeringVisual {
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(0);
+}
+
+.engineeringCore {
+  margin-left: auto;
+  margin-right: auto;
+}
