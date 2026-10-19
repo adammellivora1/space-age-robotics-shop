@@ -2470,3 +2470,16 @@ footer a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Fine-tune SAR AI Core position */
+@media (min-width: 769px) {
+  .engineeringVisual {
+    transform: translateX(-45px);
+  }
+}
+
+@media (max-width: 768px) {
+  .engineeringVisual {
+    transform: translateX(0);
+  }
+}
