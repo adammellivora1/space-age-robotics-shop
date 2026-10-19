@@ -975,7 +975,7 @@ function App() {
                       {product.category}
                     </span>
                     <h3>{product.name}</h3>
-                    <p>{product.description}</p>
+                    {/* Description is shown only in the product detail */}
 
                     <div className="productBottom">
                       <strong>{money(product.price)}</strong>
@@ -1322,5 +1322,6 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
+
 
 
