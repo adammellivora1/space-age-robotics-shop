@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+﻿import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   ArrowRight,
@@ -487,6 +487,8 @@ function App() {
           <a href="#shop">SHOP</a>
           <a href="#mission">MISSION</a>
           <a href="#technology">TECHNOLOGY</a>
+          <a href={`${BASE}references.html`}>REFERENCES</a>
+          <a href={`${BASE}contact.html`}>CONTACT</a>
         </nav>
 
         <button
@@ -541,7 +543,7 @@ function App() {
                   <span>AUTONOMOUS</span>
                 </div>
                 <div>
-                  <strong>∞</strong>
+                  <strong>âˆž</strong>
                   <span>POSSIBILITIES</span>
                 </div>
               </div>
@@ -566,13 +568,13 @@ function App() {
           <div>
             <Sparkles size={15} />
             AUTONOMOUS SYSTEMS
-            <span>•</span>
+            <span>â€¢</span>
             ARTIFICIAL INTELLIGENCE
-            <span>•</span>
+            <span>â€¢</span>
             SPACE TECHNOLOGY
-            <span>•</span>
+            <span>â€¢</span>
             ROBOTICS
-            <span>•</span>
+            <span>â€¢</span>
             AUTONOMOUS SYSTEMS
           </div>
         </section>
@@ -595,7 +597,7 @@ function App() {
             </h2>
 
             <p className="engineeringLead">
-              Beyond Robotics â€” advanced software, AI, automation and
+              Beyond Robotics Ã¢â‚¬â€ advanced software, AI, automation and
               engineering systems built for the next generation of technology.
             </p>
 
@@ -603,7 +605,7 @@ function App() {
 
             <p className="engineeringDescription">
               From autonomous machines and artificial intelligence to
-              cybersecurity, embedded systems and cloud infrastructure â€”
+              cybersecurity, embedded systems and cloud infrastructure Ã¢â‚¬â€
               we design technology around real-world requirements.
             </p>
           </div>
@@ -786,7 +788,7 @@ function App() {
 
           <a className="engineeringCTAButton" href="mailto:contact@space-age-robotics.com">
             <span>CONTACT ENGINEERING</span>
-            <strong>â†’</strong>
+            <strong>Ã¢â€ â€™</strong>
           </a>
         </div>
 
@@ -1001,7 +1003,7 @@ function App() {
         {selectedProduct && (
           <main className="sarProductPage">
             <div className="sarProductTopbar">
-              <button className="sarBackButton" onClick={closeProduct}>← BACK TO CATALOG</button>
+              <button className="sarBackButton" onClick={closeProduct}>â† BACK TO CATALOG</button>
               <span>SPACE AGE ROBOTICS / PRODUCT DETAIL</span>
             </div>
 
@@ -1013,7 +1015,7 @@ function App() {
                   ) : (
                     <div className="productModalFallback"><Bot size={90} /></div>
                   )}
-                  <span className="sarZoomHint">CLICK TO ENLARGE ↗</span>
+                  <span className="sarZoomHint">CLICK TO ENLARGE â†—</span>
                 </div>
                 {Array.isArray(selectedProduct.images) && selectedProduct.images.length > 1 && (
                   <div className="sarThumbnails">
@@ -1039,7 +1041,7 @@ function App() {
                 <button className="productModalAdd sarAddButton" onClick={() => addToCart(selectedProduct.id)}>
                   ADD TO CART <Plus size={17} />
                 </button>
-                <div className="sarTrustLine">SECURE ORDERING · CUSTOMER SUPPORT · TECHNICAL ENQUIRIES</div>
+                <div className="sarTrustLine">SECURE ORDERING Â· CUSTOMER SUPPORT Â· TECHNICAL ENQUIRIES</div>
               </div>
             </div>
 
@@ -1076,10 +1078,10 @@ function App() {
 
             {zoomedImage && Array.isArray(selectedProduct.images) && selectedProduct.images.length > 0 && (
               <div className="sarLightbox" onClick={() => setZoomedImage(false)} role="dialog" aria-modal="true" aria-label="Enlarged product image">
-                <button className="sarLightboxClose" onClick={() => setZoomedImage(false)} aria-label="Close image">×</button>
-                {selectedProduct.images.length > 1 && <button className="sarLightboxPrev" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i - 1 + selectedProduct.images.length) % selectedProduct.images.length) }} aria-label="Previous image">‹</button>}
+                <button className="sarLightboxClose" onClick={() => setZoomedImage(false)} aria-label="Close image">Ã—</button>
+                {selectedProduct.images.length > 1 && <button className="sarLightboxPrev" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i - 1 + selectedProduct.images.length) % selectedProduct.images.length) }} aria-label="Previous image">â€¹</button>}
                 <img src={selectedProduct.images[galleryIndex] || selectedProduct.images[0]} alt={selectedProduct.name} onClick={e => e.stopPropagation()} />
-                {selectedProduct.images.length > 1 && <button className="sarLightboxNext" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i + 1) % selectedProduct.images.length) }} aria-label="Next image">›</button>}
+                {selectedProduct.images.length > 1 && <button className="sarLightboxNext" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i + 1) % selectedProduct.images.length) }} aria-label="Next image">â€º</button>}
               </div>
             )}
           </main>
@@ -1189,8 +1191,8 @@ function App() {
           <img src={`${BASE}logo.jpg`} alt="" />
           <strong>SPACE AGE ROBOTICS</strong>
         </div>
-        <span>© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
-        <a href="#top">BACK TO TOP →</a>
+        <span>Â© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
+        <a href="#top">BACK TO TOP â†’</a>
       </footer>
 
       {cartOpen && (
@@ -1322,6 +1324,8 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
+
+
 
 
 
