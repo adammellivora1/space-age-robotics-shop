@@ -2508,3 +2508,29 @@ footer a:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* SAR CORE: center the cube independently from its label */
+.engineeringCore {
+  position: relative;
+  display: block;
+}
+
+.engineeringCore .coreCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  flex: none;
+}
+
+.engineeringCore .coreLabel {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 88px);
+  transform: translateX(-50%);
+  margin: 0;
+  white-space: nowrap;
+  text-align: center;
+}
+
