@@ -398,7 +398,7 @@ document.getElementById("status").textContent=
 
 }
 
-function addToShop(){
+async function addToShop(){
 
 if(!product){
 document.getElementById("status").textContent="No product imported.";
@@ -408,39 +408,49 @@ return;
 saveEdits();
 
 const publicProduct={
-
 id:product.id||product.code||("SAR-"+Date.now()),
-
 code:product.code||"",
-
 name:product.name,
-
 category:product.category,
-
 description:product.description,
-
 price:Number(product.price||0),
-
-images:Array.isArray(product.images)
-?[...product.images]
-:[]
-
+images:Array.isArray(product.images)?[...product.images]:[]
 };
 
-localStorage.setItem(
-"sar_imported_product",
-JSON.stringify(publicProduct)
-);
-
-document.getElementById("status").textContent=
-"Product prepared for the shop. Supplier price was NOT exported.";
-
-console.log("PUBLIC PRODUCT:",publicProduct);
-console.log("INTERNAL SUPPLIER PRICE:",product.supplierPrice);
-
+if(!publicProduct.name || !Number.isFinite(publicProduct.price) || publicProduct.price<=0){
+document.getElementById("status").textContent="Product name and a valid selling price are required.";
+return;
 }
 
-</script>
+const status=document.getElementById("status");
+status.textContent="Publishing product to GitHub Pages...";
+
+try{
+const response=await fetch("/api/publish-product",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(publicProduct)
+});
+
+const result=await response.json();
+
+if(!response.ok || !result.ok){
+throw new Error(result.error||"GitHub publishing failed.");
+}
+
+localStorage.setItem("sar_imported_product",JSON.stringify(publicProduct));
+
+status.textContent="Published to GitHub! "+result.product+" — "+result.count+" products in catalog. Pages may take a few minutes to update.";
+
+console.log("PUBLISHED PUBLIC PRODUCT:",publicProduct);
+console.log("INTERNAL SUPPLIER PRICE was not sent.");
+
+}catch(error){
+status.textContent="Publishing failed: "+error.message;
+console.error("Product publishing error:",error);
+}
+
+}</script>
 
 </body>
 </html>
