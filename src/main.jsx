@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   ArrowRight,
@@ -541,7 +541,7 @@ function App() {
                   <span>AUTONOMOUS</span>
                 </div>
                 <div>
-                  <strong>Ã¢Ë†Å¾</strong>
+                  <strong>∞</strong>
                   <span>POSSIBILITIES</span>
                 </div>
               </div>
@@ -566,13 +566,13 @@ function App() {
           <div>
             <Sparkles size={15} />
             AUTONOMOUS SYSTEMS
-            <span>Ã¢â‚¬Â¢</span>
+            <span>•</span>
             ARTIFICIAL INTELLIGENCE
-            <span>Ã¢â‚¬Â¢</span>
+            <span>•</span>
             SPACE TECHNOLOGY
-            <span>Ã¢â‚¬Â¢</span>
+            <span>•</span>
             ROBOTICS
-            <span>Ã¢â‚¬Â¢</span>
+            <span>•</span>
             AUTONOMOUS SYSTEMS
           </div>
         </section>
@@ -1189,8 +1189,8 @@ function App() {
           <img src={`${BASE}logo.jpg`} alt="" />
           <strong>SPACE AGE ROBOTICS</strong>
         </div>
-        <span>Ã‚Â© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
-        <a href="#top">BACK TO TOP Ã¢â€ â€˜</a>
+        <span>© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
+        <a href="#top">BACK TO TOP →</a>
       </footer>
 
       {cartOpen && (

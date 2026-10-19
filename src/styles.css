@@ -2483,3 +2483,28 @@ footer a:hover {
     transform: translateX(0);
   }
 }
+
+/* Final alignment: center the AI Core inside its visual column */
+.engineeringHero {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+}
+
+.engineeringVisual {
+  transform: none !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.engineeringCore {
+  margin-inline: auto;
+  left: auto;
+  right: auto;
+}
+
+@media (max-width: 768px) {
+  .engineeringHero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
