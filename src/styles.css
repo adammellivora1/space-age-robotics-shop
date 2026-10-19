@@ -2406,3 +2406,47 @@ footer a:hover {
   .productModalGallery img:first-child { height: 240px; }
   .catalogProducts .productVisual .productImage { height: 210px; }
 }
+/* Full product page */
+.sarProductPage{position:fixed;inset:0;z-index:1000;overflow-y:auto;background:#070b12;color:#f4f6fb;padding:24px clamp(16px,4vw,64px) 64px}
+.sarProductTopbar{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #283342;padding:8px 0 22px;margin-bottom:30px;color:#9ba9bb;font-size:11px;letter-spacing:2px}
+.sarBackButton{border:1px solid #354354;background:transparent;color:#eaf1fa;padding:12px 16px;cursor:pointer;font:inherit;letter-spacing:1px}
+.sarBackButton:hover{border-color:#69d5ff;color:#69d5ff}
+.sarProductLayout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:clamp(24px,5vw,72px);max-width:1440px;margin:0 auto}
+.sarMainImage{position:relative;min-height:320px;height:min(58vh,620px);display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#172435,#0b111b 68%);border:1px solid #263447;cursor:zoom-in;overflow:hidden}
+.sarMainImage img{width:100%;height:100%;object-fit:contain;padding:22px}
+.sarZoomHint{position:absolute;right:14px;bottom:14px;background:#070b12d9;border:1px solid #435166;padding:9px 12px;font-size:10px;letter-spacing:1px}
+.sarThumbnails{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.sarThumbnail{width:78px;height:72px;border:1px solid #303d4d;background:#0c131e;padding:3px;cursor:pointer}
+.sarThumbnail.active{border-color:#69d5ff}
+.sarThumbnail img{width:100%;height:100%;object-fit:contain}
+.sarProductDetails{padding:12px 0}
+.sarProductDetails h1{font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1px;margin:18px 0}
+.sarProductPrice{font-size:30px;font-weight:700;margin:22px 0}
+.sarProductDescription{font-size:16px;line-height:1.8;color:#c2ccd9;white-space:pre-line}
+.sarInfoNote{border:1px solid #28394c;padding:18px;margin:24px 0;color:#aebdce;line-height:1.7;font-size:13px}
+.sarInfoNote strong{font-size:11px;letter-spacing:1.6px;color:#69d5ff}
+.sarInfoNote p{margin-bottom:0}
+.sarAddButton{width:100%;justify-content:center;min-height:52px}
+.sarTrustLine{margin-top:16px;color:#8494a8;font-size:10px;letter-spacing:1.3px;line-height:1.8}
+.sarReviews{max-width:1440px;margin:70px auto 0;padding-top:34px;border-top:1px solid #283342}
+.sarReviewsHeading h2{font-size:clamp(26px,3vw,38px);margin:10px 0}
+.sarReviewsHeading p{color:#aebbd0}
+.sarReviewGrid{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(300px,1.2fr);gap:34px;margin-top:28px}
+.sarReviewForm{display:flex;flex-direction:column;gap:10px;padding:22px;background:#0d1420;border:1px solid #283342}
+.sarReviewForm label{font-size:12px;color:#c4d0df;margin-top:5px}
+.sarReviewForm input,.sarReviewForm textarea{width:100%;box-sizing:border-box;background:#070c14;color:#f4f6fb;border:1px solid #344257;padding:13px;font:inherit;resize:vertical}
+.sarReviewForm small{color:#8f9daf;line-height:1.5;margin-top:5px}
+.sarReviewForm .productModalAdd{margin-top:8px;cursor:pointer}
+.sarNoReviews{padding:24px;border:1px solid #283342;color:#dfe7f1}
+.sarNoReviews p{color:#9eacbf}
+.sarReviewItem{padding:20px 0;border-bottom:1px solid #283342}
+.sarReviewItem>div{display:flex;justify-content:space-between;gap:12px}
+.sarReviewItem span{font-size:12px;color:#91a0b4}
+.sarReviewItem p{white-space:pre-wrap;color:#c3cedd;line-height:1.7}
+.sarLightbox{position:fixed;inset:0;z-index:1100;background:#02050af5;display:flex;align-items:center;justify-content:center;padding:55px}
+.sarLightbox img{max-width:90vw;max-height:86vh;object-fit:contain;cursor:default}
+.sarLightbox button{position:absolute;border:1px solid #536276;background:#101a28;color:white;cursor:pointer;font-size:30px;width:48px;height:48px}
+.sarLightboxClose{top:18px;right:20px}
+.sarLightboxPrev{left:18px;top:50%;transform:translateY(-50%)}
+.sarLightboxNext{right:18px;top:50%;transform:translateY(-50%)}
+@media(max-width:800px){.sarProductPage{padding:14px 16px 40px}.sarProductTopbar{align-items:flex-start;flex-direction:column;margin-bottom:20px}.sarProductLayout,.sarReviewGrid{grid-template-columns:1fr}.sarMainImage{height:48vh;min-height:280px}.sarProductDetails h1{font-size:30px}.sarReviews{margin-top:42px}.sarLightbox{padding:20px}.sarLightbox img{max-width:82vw}}

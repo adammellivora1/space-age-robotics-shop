@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+﻿import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import {
   ArrowRight,
@@ -275,6 +275,67 @@ function App() {
   const [category, setCategory] = useState("ALL")
   const [query, setQuery] = useState("")
   const [selectedProduct, setSelectedProduct] = useState(null)
+  const [galleryIndex, setGalleryIndex] = useState(0)
+  const [zoomedImage, setZoomedImage] = useState(false)
+  const [reviewName, setReviewName] = useState("")
+  const [reviewText, setReviewText] = useState("")
+  const [reviews, setReviews] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("sar-product-reviews") || "{}") } catch { return {} }
+  })
+
+  const openProduct = (product) => {
+    setSelectedProduct(product)
+    setGalleryIndex(0)
+    setZoomedImage(false)
+    window.location.hash = `/product/${encodeURIComponent(product.id)}`
+    window.scrollTo(0, 0)
+  }
+
+  const closeProduct = () => {
+    setSelectedProduct(null)
+    setZoomedImage(false)
+    if (window.location.hash.startsWith("#/product/")) {
+      history.replaceState(null, "", window.location.pathname + window.location.search)
+    }
+  }
+
+  useEffect(() => {
+    const syncProductRoute = () => {
+      const match = window.location.hash.match(/^#\/product\/(.+)$/)
+      if (!match) {
+        setSelectedProduct(null)
+        return
+      }
+      let id
+      try { id = decodeURIComponent(match[1]) } catch { id = match[1] }
+      const found = catalogProducts.find(p => String(p.id) === id)
+      if (found) {
+        setSelectedProduct(found)
+        setGalleryIndex(0)
+      }
+    }
+    syncProductRoute()
+    window.addEventListener("hashchange", syncProductRoute)
+    return () => window.removeEventListener("hashchange", syncProductRoute)
+  }, [catalogProducts])
+
+  useEffect(() => {
+    try { localStorage.setItem("sar-product-reviews", JSON.stringify(reviews)) } catch {}
+  }, [reviews])
+
+  const submitReview = (event) => {
+    event.preventDefault()
+    const name = reviewName.trim()
+    const text = reviewText.trim()
+    if (!name || !text || !selectedProduct) return
+    const item = { name, text, date: new Date().toLocaleDateString() }
+    setReviews(previous => ({
+      ...previous,
+      [selectedProduct.id]: [...(previous[selectedProduct.id] || []), item]
+    }))
+    setReviewName("")
+    setReviewText("")
+  }
   const [cart, setCart] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
@@ -480,7 +541,7 @@ function App() {
                   <span>AUTONOMOUS</span>
                 </div>
                 <div>
-                  <strong>âˆž</strong>
+                  <strong>Ã¢Ë†Å¾</strong>
                   <span>POSSIBILITIES</span>
                 </div>
               </div>
@@ -505,13 +566,13 @@ function App() {
           <div>
             <Sparkles size={15} />
             AUTONOMOUS SYSTEMS
-            <span>â€¢</span>
+            <span>Ã¢â‚¬Â¢</span>
             ARTIFICIAL INTELLIGENCE
-            <span>â€¢</span>
+            <span>Ã¢â‚¬Â¢</span>
             SPACE TECHNOLOGY
-            <span>â€¢</span>
+            <span>Ã¢â‚¬Â¢</span>
             ROBOTICS
-            <span>â€¢</span>
+            <span>Ã¢â‚¬Â¢</span>
             AUTONOMOUS SYSTEMS
           </div>
         </section>
@@ -534,7 +595,7 @@ function App() {
             </h2>
 
             <p className="engineeringLead">
-              Beyond Robotics — advanced software, AI, automation and
+              Beyond Robotics â€” advanced software, AI, automation and
               engineering systems built for the next generation of technology.
             </p>
 
@@ -542,7 +603,7 @@ function App() {
 
             <p className="engineeringDescription">
               From autonomous machines and artificial intelligence to
-              cybersecurity, embedded systems and cloud infrastructure —
+              cybersecurity, embedded systems and cloud infrastructure â€”
               we design technology around real-world requirements.
             </p>
           </div>
@@ -725,7 +786,7 @@ function App() {
 
           <a className="engineeringCTAButton" href="mailto:contact@space-age-robotics.com">
             <span>CONTACT ENGINEERING</span>
-            <strong>→</strong>
+            <strong>â†’</strong>
           </a>
         </div>
 
@@ -892,7 +953,7 @@ function App() {
               const Icon = product.icon
 
               return (
-                <article className="productCard" key={product.id} role="button" tabIndex={0} onClick={() => setSelectedProduct(product)} onKeyDown={(e) => { if (e.key === "Enter") setSelectedProduct(product) }}>
+                <article className="productCard" key={product.id} role="button" tabIndex={0} onClick={() => openProduct(product)} onKeyDown={(e) => { if (e.key === "Enter") openProduct(product) }}>
                   <div className="productVisual">
                     <div className="productCorner">SAR / {product.code}</div>
                     {Array.isArray(product.images) && product.images[0] ? (
@@ -937,33 +998,93 @@ function App() {
             </div>
           )}
         </section>
-
         {selectedProduct && (
-          <div className="productModalBackdrop" onClick={() => setSelectedProduct(null)}>
-            <div className="productModal" role="dialog" aria-modal="true" aria-label={selectedProduct.name} onClick={(e) => e.stopPropagation()}>
-              <button className="productModalClose" onClick={() => setSelectedProduct(null)} aria-label="Close product details">×</button>
-              <div className="productModalGallery">
-                {Array.isArray(selectedProduct.images) && selectedProduct.images.length > 0 ? (
-                  selectedProduct.images.map((src, index) => (
-                    <img key={src + index} src={src} alt={`${selectedProduct.name} ${index + 1}`} loading={index > 0 ? "lazy" : "eager"} />
-                  ))
-                ) : (
-                  <div className="productModalFallback"><Bot size={72} /></div>
+          <main className="sarProductPage">
+            <div className="sarProductTopbar">
+              <button className="sarBackButton" onClick={closeProduct}>← BACK TO CATALOG</button>
+              <span>SPACE AGE ROBOTICS / PRODUCT DETAIL</span>
+            </div>
+
+            <div className="sarProductLayout">
+              <div className="sarGallery">
+                <div className="sarMainImage" onClick={() => setZoomedImage(true)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") setZoomedImage(true) }} aria-label="Enlarge product image">
+                  {Array.isArray(selectedProduct.images) && selectedProduct.images.length > 0 ? (
+                    <img src={selectedProduct.images[galleryIndex] || selectedProduct.images[0]} alt={selectedProduct.name} />
+                  ) : (
+                    <div className="productModalFallback"><Bot size={90} /></div>
+                  )}
+                  <span className="sarZoomHint">CLICK TO ENLARGE ↗</span>
+                </div>
+                {Array.isArray(selectedProduct.images) && selectedProduct.images.length > 1 && (
+                  <div className="sarThumbnails">
+                    {selectedProduct.images.map((src, index) => (
+                      <button key={src + index} className={galleryIndex === index ? "sarThumbnail active" : "sarThumbnail"} onClick={() => setGalleryIndex(index)} aria-label={`Show image ${index + 1}`}>
+                        <img src={src} alt={`${selectedProduct.name} thumbnail ${index + 1}`} loading="lazy" />
+                      </button>
+                    ))}
+                  </div>
                 )}
               </div>
-              <div className="productModalInfo">
-                <span className="productCategory">{selectedProduct.category}</span>
-                <h2>{selectedProduct.name}</h2>
+
+              <div className="sarProductDetails">
+                <span className="productCategory">{selectedProduct.category || "ROBOTICS"}</span>
+                <h1>{selectedProduct.name}</h1>
                 <p className="productModalCode">SAR / {selectedProduct.code || selectedProduct.id}</p>
-                <p className="productModalDescription">{selectedProduct.description || "Contact us for further product information."}</p>
-                <strong className="productModalPrice">{money(selectedProduct.price)}</strong>
-                <button className="productModalAdd" onClick={() => { addToCart(selectedProduct.id); setSelectedProduct(null) }}>
+                <div className="sarProductPrice">{money(selectedProduct.price)}</div>
+                <p className="sarProductDescription">{selectedProduct.description || "Contact our team for complete technical information, configuration options and delivery details."}</p>
+                <div className="sarInfoNote">
+                  <strong>TECHNICAL INFORMATION</strong>
+                  <p>Specifications, available configurations, warranty and delivery timelines should be confirmed with our team before ordering.</p>
+                </div>
+                <button className="productModalAdd sarAddButton" onClick={() => addToCart(selectedProduct.id)}>
                   ADD TO CART <Plus size={17} />
                 </button>
+                <div className="sarTrustLine">SECURE ORDERING · CUSTOMER SUPPORT · TECHNICAL ENQUIRIES</div>
               </div>
             </div>
-          </div>
+
+            <section className="sarReviews">
+              <div className="sarReviewsHeading">
+                <span className="productCategory">CUSTOMER FEEDBACK</span>
+                <h2>Reviews &amp; comments</h2>
+                <p>Questions or feedback about this product? Share them below.</p>
+              </div>
+              <div className="sarReviewGrid">
+                <form className="sarReviewForm" onSubmit={submitReview}>
+                  <label htmlFor="sar-review-name">Your name</label>
+                  <input id="sar-review-name" value={reviewName} onChange={e => setReviewName(e.target.value)} maxLength={80} required placeholder="Name" />
+                  <label htmlFor="sar-review-text">Your review or question</label>
+                  <textarea id="sar-review-text" value={reviewText} onChange={e => setReviewText(e.target.value)} maxLength={2000} required rows={5} placeholder="Write your comment..." />
+                  <button className="productModalAdd" type="submit">POST COMMENT</button>
+                  <small>Comments are currently saved only in this browser and are not visible to other visitors.</small>
+                </form>
+                <div className="sarReviewList">
+                  {(reviews[selectedProduct.id] || []).length === 0 ? (
+                    <div className="sarNoReviews">
+                      <strong>Be the first to comment</strong>
+                      <p>No customer comments have been added for this product yet.</p>
+                    </div>
+                  ) : (reviews[selectedProduct.id] || []).map((review, index) => (
+                    <article className="sarReviewItem" key={`${review.date}-${index}`}>
+                      <div><strong>{review.name}</strong><span>{review.date}</span></div>
+                      <p>{review.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {zoomedImage && Array.isArray(selectedProduct.images) && selectedProduct.images.length > 0 && (
+              <div className="sarLightbox" onClick={() => setZoomedImage(false)} role="dialog" aria-modal="true" aria-label="Enlarged product image">
+                <button className="sarLightboxClose" onClick={() => setZoomedImage(false)} aria-label="Close image">×</button>
+                {selectedProduct.images.length > 1 && <button className="sarLightboxPrev" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i - 1 + selectedProduct.images.length) % selectedProduct.images.length) }} aria-label="Previous image">‹</button>}
+                <img src={selectedProduct.images[galleryIndex] || selectedProduct.images[0]} alt={selectedProduct.name} onClick={e => e.stopPropagation()} />
+                {selectedProduct.images.length > 1 && <button className="sarLightboxNext" onClick={e => { e.stopPropagation(); setGalleryIndex(i => (i + 1) % selectedProduct.images.length) }} aria-label="Next image">›</button>}
+              </div>
+            )}
+          </main>
         )}
+
 
         <section className="technology" id="technology">
           <div className="techContent">
@@ -1068,8 +1189,8 @@ function App() {
           <img src={`${BASE}logo.jpg`} alt="" />
           <strong>SPACE AGE ROBOTICS</strong>
         </div>
-        <span>Â© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
-        <a href="#top">BACK TO TOP â†‘</a>
+        <span>Ã‚Â© 2026 SPACE AGE ROBOTICS. ALL SYSTEMS NOMINAL.</span>
+        <a href="#top">BACK TO TOP Ã¢â€ â€˜</a>
       </footer>
 
       {cartOpen && (
@@ -1201,3 +1322,4 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />)
+
